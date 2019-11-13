@@ -6,6 +6,14 @@ The feature files are [here](src\features), written in a [Specification by Examp
 
 ## Usage
 
- * install `yarn install` or `npm install`.
- * run the tests `yarn test` or `npm test`.
- * generate and open the report `yarn report` or `npm run report`.
+ * Install `yarn install` or `npm install`.
+ * Run the tests `yarn test` or `npm test`.
+ * Generate and open the report `yarn report` or `npm run report`.
+
+## To do
+
+  * Extract the test data pattern into a general Data class.
+  * Explore the data model domains for users and mortgages e.g.
+    * which information belongs strictly to the user rather than mortgage type,
+    * which information determines offered mortgage types,
+    * which information affects offered rates but not types, etc.

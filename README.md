@@ -6,8 +6,6 @@ The feature files are [here](src\features), written in a [Specification by Examp
 
 ## Usage
 
- * install `yarn install`
- * run the tests `yarn test`
- * generate and open the report `yarn run report`
-
-Installation and scripts should work fine with `npm` as well.
+ * install `yarn install` or `npm install`.
+ * run the tests `yarn test` or `npm test`.
+ * generate and open the report `yarn report` or `npm run report`.

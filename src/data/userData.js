@@ -5,8 +5,6 @@ class UserData {
 
   constructor() {
     this.typicalUser = {
-      email: "wgabrieldapaixao@gmx.com",
-      password: "12345678"
     };
   }
 

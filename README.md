@@ -1,30 +1,13 @@
-Webdriver.io + CucumberJS automation test
-====================
+# WDIO and Cucumber Test Demo
 
-Implement the Feature file "src/features/find-mortgage-rate.feature" according to the following:
+Demo using [WebdriverIO](https://webdriver.io/) with [Cucumber](https://cucumber.io/).
 
-- Navitage to https://nationwide.co.uk
-- Using the Menu navigatge to "Mortgages" > "New mortgage customer: Mortgage rates"
-- Find mortgage rate for the following case:
-  - Nationwide mortgage = No
-  - Type of mortgage = Changing lender
-  - Property value = £300,000
-  - Mortgage amount = £150,000
-  - Term = 30 years
-- Filter the results:
-  - Mortgage type = Fixed
-  - Product fee = With Fee
-- Then check the results return the following products:
-  - 2 yr Fixed
-  - 3 yr Fixed
-  - 5 yr Fixed
-  - 10 yr Fixed
-- Click "More info and apply" and "Apply" button for the "5 yr Fixed" product
-- Verify the next page's heading is "Start your remortgage application"
+The feature files are [here](src\features), written in a [Specification by Example](https://gojko.net/books/specification-by-example/) style.
 
-## Quick start
-run `npm start`
+## Usage
 
-## Notes
-The project is setup with babel to support ES6 / ES2016.
-Feel free to update and change the setup & configs as you require.
+ * install `yarn install`
+ * run the tests `yarn test`
+ * generate and open the report `yarn run report`
+
+Installation and scripts should work fine with `npm` as well.

@@ -4,8 +4,9 @@
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
-    "test": "./node_modules/.bin/wdio wdio.conf.js",
-    "test:smoke": "./node_modules/.bin/wdio wdio.conf.js --cucumberOpts.tagExpression='@smoke'",
+    "start": "./node_modules/.bin/wdio wdio.conf.js",
+    "start:local": "./node_modules/.bin/wdio wdio.conf.local.js",
+    "test": "./node_modules/.bin/mocha --require @babel/register src/**/*.test.js",
     "report:generate": "./node_modules/.bin/allure generate --clean ./allure-results -o ./allure-reports",
     "report:serve": "./node_modules/.bin/static -p 8000 ./allure-reports",
     "report:open": "./node_modules/.bin/open-cli http://127.0.0.1:8000",
@@ -28,8 +29,11 @@
     "open-cli": "^5.0.0"
   },
   "devDependencies": {
+    "chromedriver": "^78.0.1",
     "eslint": "6.1.0",
     "eslint-config-airbnb-base": "14.0.0",
-    "eslint-plugin-import": "2.18.2"
+    "eslint-plugin-import": "2.18.2",
+    "mocha": "^6.2.2",
+    "wdio-chromedriver-service": "^5.0.2"
   }
 }

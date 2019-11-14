@@ -8,7 +8,7 @@ Feature: Find a mortgage rate
     and is designed to be trivially extended to other customer and mortgage
     types, through e.g. Scenario Outlines.
 
-    Given I'm looking for mortgage information
+    Given I'm looking for information on new mortgages
     When I enter my details as a "typical" customer looking for a "fixed with fee" mortgage
     Then I am shown "fixed with fee" mortgage options
     And I can apply for a mortgage

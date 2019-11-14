@@ -12,7 +12,7 @@ The feature files are [here](src\features), written in a [Specification by Examp
 
 ## To do
 
-  * Extract the test data pattern into a general Data class.
+  * Explicitly handle behaviour differences for narrow and wide viewports.
   * Explore the data model domains for users and mortgages e.g.
     * which information belongs strictly to the user rather than mortgage type,
     * which information determines offered mortgage types,

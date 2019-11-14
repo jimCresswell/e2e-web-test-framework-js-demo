@@ -1,6 +1,12 @@
+/* eslint prefer-destructuring: off */
+
 import { assert } from 'chai';
 import { Given, When, Then } from 'cucumber';
+
 import mainPage from '../pages/main.page';
+import ourMortgageRatesPage from '../pages/ourMortgageRates.page';
+import readyToApplyPage from '../pages/readyToApply.page';
+
 import users from '../data/users';
 import mortgages from '../data/mortgages';
 
@@ -15,17 +21,29 @@ Given(/^I'm looking for information on new mortgages$/, () => {
   mainPage.navigation.goToNewMortgageRates();
 });
 
-When(/^I enter my details as a "(.*)" customer looking for a "(.*)" mortgage$/,
+When(
+  /^I enter my details as a "(.*)" customer looking for a "(.*)" mortgage$/,
   (userType, mortgageType) => {
-  //const user = users.getByType(userType);
-  //const mortgage = mortgages.getByType(mortgageType);
-});
+    const user = users.getByType(userType);
+    const mortgagePreferences = mortgages.getByType(mortgageType).preferences;
+
+    ourMortgageRatesPage.enterUserDetails(user);
+    ourMortgageRatesPage.enterMortgagePreferences(mortgagePreferences);
+  }
+);
 
 Then(/^I am shown "(.*)" mortgage options$/, (mortgageType) => {
-  //const mortgage = mortgages.getByType(mortgageType);
-  // assert
+  const expectedOffers = mortgages.getByType(mortgageType).expectedOffers;
+  const actualOffers = ourMortgageRatesPage.getOfferNames();
+
+  assert.equal(expectedOffers, actualOffers, 'Offers should match.');
 });
 
-Then(/^I can apply for a mortgage$/, () => {
-  // assert
+Then(/^I can start a remortgage application$/, () => {
+  ourMortgageRatesPage.startApplication();
+
+  assert.isTrue(
+    readyToApplyPage.isRemortgagePage(),
+    'Should be on the "start your remortgage" page.'
+  );
 });

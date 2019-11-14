@@ -7,9 +7,9 @@ import TestData from './testData';
 const DATA_CLASS = 'user';
 
 const TYPES = {
-  typical: {
-    existingCustomer: false,
-    changingLender: true,
+  remortgaging: {
+    hasNationwideMortgage: false,
+    applicationType: 'changing lender',
     porpertyValue: 300000,
     mortgageAmount: 150000,
     currentTermLengthYears: 30,

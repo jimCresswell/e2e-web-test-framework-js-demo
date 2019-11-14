@@ -27,7 +27,7 @@ class TestData {
    * @return {Object}          The test data.
    */
   getByType(type) {
-    const typeNoSpaces = type.replace(/\s/, '_');
+    const typeNoSpaces = type.replace(/\s/g, '_');
     if (Object.prototype.hasOwnProperty.call(this.types, typeNoSpaces)) {
       return this.types[typeNoSpaces];
     }

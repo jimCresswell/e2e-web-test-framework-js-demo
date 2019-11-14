@@ -8,14 +8,15 @@ class MainPage {
    * Mix in the navigation section.
    */
   constructor() {
+    this.url = '/';
     this.navigation = navigationSection;
   }
 
   /**
-   * Open the page at the default URL.
+   * Open the page directly.
    */
   open() {
-    browser.url('/');
+    browser.url(this.url);
   }
 }
 

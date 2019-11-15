@@ -33,11 +33,11 @@ class Offer {
   /**
    * Generate the expected data-product-name attribute string.
    *
-   * Note the double space after 'yr'.
+   * Note the double space after 'yr' and trailing space.
    * @return {String} data-product-name attribute string.
    */
   toDataProductName() {
-    return `${this.offerLength} yr  ${this.offerType}`;
+    return `${this.offerLength} yr  ${this.offerType} `;
   }
 }
 

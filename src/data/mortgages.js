@@ -3,43 +3,11 @@
  */
 
 import TestData from './testData';
+import Offer from './offer';
 
 const DATA_CLASS = 'mortgage';
 
 const FIXED = 'Fixed';
-
-/**
- * Mortgage offer types.
-*/
-class Offer {
-  /**
-   * Mortgage offer types.
-   * @param {Number} length Offered length of rate type in years.
-   * @param {String} type   Rate type.
-   */
-  constructor(length, type) {
-    this.offerLength = length;
-    this.offerType = type;
-  }
-
-  /**
-   * Custom toString method for data comparisons.
-   * @return {String} String description of the offer.
-   */
-  toString() {
-    return `${this.offerLength}yr${this.offerType}`;
-  }
-
-  /**
-   * Generate the expected data-product-name attribute string.
-   *
-   * Note the double space after 'yr' and trailing space.
-   * @return {String} data-product-name attribute string.
-   */
-  toDataProductName() {
-    return `${this.offerLength} yr  ${this.offerType} `;
-  }
-}
 
 const TYPES = {
   fixed_with_fee: {

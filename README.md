@@ -15,10 +15,6 @@ The feature files are [here](src/features), written in a [Specification by Examp
 
 ## To do
 
-### MVC
-
-  * Implement page interaction and data extraction methods for [mortgage rate search page](src/pages/ourMortgageRates.page.js).
-
 ### Improvements
 
   * Abstract shared page object members and methods to a generic `PageObject` class.

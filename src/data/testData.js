@@ -43,10 +43,12 @@ class TestData {
   /**
    * If a data accessor is called before a type is set throw an error.
    */
-  throwTypeError() {
-    throw new TypeError(
-      'TestData accessor called before setting type with `getByType`'
-    );
+  checkTypeIsSet() {
+    if (this.data === null) {
+      throw new TypeError(
+        'TestData accessor called before setting type with `getByType`'
+      );
+    }
   }
 }
 

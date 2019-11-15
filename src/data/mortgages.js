@@ -59,18 +59,19 @@ const TYPES = {
 
 const mortgageData = new TestData(DATA_CLASS, TYPES);
 mortgageData.isFixed = function isFixed() {
-  if (this.data === null) this.throwTypeError();
+  this.checkTypeIsSet();
   return this.data.preferences.rateType === FIXED;
 };
 mortgageData.hasFee = function isFixed() {
-  if (this.data === null) this.throwTypeError();
+  this.checkTypeIsSet();
   return this.data.preferences.hasFee;
 };
 mortgageData.getExpectedOffers = function getExpectedOffer() {
-  if (this.data === null) this.throwTypeError();
+  this.checkTypeIsSet();
   return this.data.expectedOffers;
 };
 mortgageData.getPreferredProductName = function getPreferredProductName() {
+  this.checkTypeIsSet();
   return this.data.preferences.offerPreference.toDataProductName();
 };
 

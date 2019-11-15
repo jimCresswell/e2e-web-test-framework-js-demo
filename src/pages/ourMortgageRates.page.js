@@ -13,17 +13,15 @@ class OurMortgageRatesPage {
   get mortgageTerm() { return $('#SearchMortgageTerm'); }
   get findARateButton() { return $('button=Find a mortgage rate'); }
 
-  get resultsHeader() { return $('h3*="mortgages for you"'); }
+  get resultsHeader() { return $('h3*=mortgages for you'); }
   get updatingOverlay() { return $('#updatingOverlay'); }
 
-  get fixedRateCheck() { return ('#fixed'); }
-  get withFeeCheck() { return ('#product-fee-fee'); }
+  get fixedRateCheck() { return $('#fixed'); }
+  get withFeeCheck() { return $('#product-fee-fee'); }
 
   get newMortgageResultsContainer() { return $('#NewMortgageRateTables'); }
-  get fixedMortgageResults() {
-    return this.newMortgageResultsContainer
-      .$$('ratesTableBody tr[data-product-name*="Fixed"]');
-  }
+  get indicativeFixedResult() { return $('tr[data-product-name*="Fixed"]'); }
+  get fixedMortgageResults() { return $$('tr[data-product-name*="Fixed"]'); }
 
   get fiveYrFixedResult() { return $('tr[data-product-name="5 yr  Fixed "]'); }
 
@@ -45,6 +43,16 @@ class OurMortgageRatesPage {
    */
   open() {
     browser.url(this.url);
+  }
+
+  /**
+   * If the results are updating wait for that to finish.
+   */
+  waitForResultsUpdate() {
+    if (this.updatingOverlay.isDisplayed()) {
+      // The second argument negates the wait condition.
+      this.updatingOverlay.waitForDisplayed(undefined, true);
+    }
   }
 
   /**
@@ -94,13 +102,30 @@ class OurMortgageRatesPage {
     this.resultsHeader.waitForDisplayed();
 
     if (mortgage.isFixed()) {
+      // To do: figure out how sometimes this results
+      // in "tracker" being clicked.
+      this.fixedRateCheck.waitForClickable();
       this.fixedRateCheck.click();
+      this.waitForResultsUpdate();
     } else {
       /* eslint-disable prefer-destructuring */
       const type = mortgage.data.preferences.type;
       /* eslint-enable prefer-destructuring */
       throw new TypeError(
-        `Mortgage type "${type}" is not implemented yet.`
+        `Mortgage rate type "${type}" is not implemented yet.`
+      );
+    }
+
+    if (mortgage.hasFee()) {
+      this.withFeeCheck.waitForClickable();
+      this.withFeeCheck.click();
+      this.waitForResultsUpdate();
+    } else {
+      /* eslint-disable prefer-destructuring */
+      const type = mortgage.data.preferences.hasFee;
+      /* eslint-enable prefer-destructuring */
+      throw new TypeError(
+        `Mortgage fee type "${type}" is not implemented yet.`
       );
     }
   }
@@ -110,16 +135,45 @@ class OurMortgageRatesPage {
    * @return {Array} A list of names.
    */
   getOfferNames() {
-    console.log('get offer names');
-    return ['not', 'real', 'offers'];
+    // Wait for the results to come in.
+    this.newMortgageResultsContainer.waitForDisplayed();
+    this.indicativeFixedResult.waitForDisplayed();
+
+    const mortgageResults = this.fixedMortgageResults;
+
+    const offerNames = mortgageResults.map(
+      (el) => el
+        .getAttribute('data-product-name')
+        .replace(/\s/g, '')
+    );
+
+    return offerNames;
   }
 
   /**
    * Start the application for the preferred offer type.
-   * @param  {String} offerPreference Preferred offer type description.
+   * @param  {String} dataProductName Preferred data-product-name.
    */
-  startApplication(offerPreference) {
-    console.log('start application for ' + offerPreference);
+  startApplication(dataProductName) {
+    browser.debug();
+    
+    const preferredOfferEl = $(`tr[data-product-name="${dataProductName}"]`);
+    preferredOfferEl.waitForExist();
+    preferredOfferEl.scrollIntoView();
+    preferredOfferEl.waitForDisplayed();
+
+    // Click on the 'more info' button.
+    preferredOfferEl.$(this.moreDetailsSelector).click();
+
+    // Find the 'Apply' button which is in a different table row with a
+    // differently formatted 'data-productname'.
+    const applyButton = preferredOfferEl
+      .$('..')
+      .$(this.offerApplyButtonSelector);
+    applyButton.waitForExist();
+    applyButton.scrollIntoView();
+    applyButton.waitForClickable();
+    applyButton.click();
   }
 }
 

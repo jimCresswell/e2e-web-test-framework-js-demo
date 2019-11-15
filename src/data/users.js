@@ -20,9 +20,11 @@ const TYPES = {
 
 const userData = new TestData(DATA_CLASS, TYPES);
 userData.hasNationwideMortgage = function hasNationwideMortgage() {
+  if (this.data === null) this.throwTypeError();
   return this.data.hasNationwideMortgage;
 };
 userData.isChangingLender = function isChangingLender() {
+  if (this.data === null) this.throwTypeError();
   return this.data.applicationType === CHANGING_LENDER;
 };
 

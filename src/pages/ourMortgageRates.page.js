@@ -25,6 +25,8 @@ class OurMortgageRatesPage {
 
   get fiveYrFixedResult() { return $('tr[data-product-name="5 yr  Fixed "]'); }
 
+  get feedbackNoButton() { return $('#feedback .survey-no'); }
+
   // Selectors for chaining. Note these are selectors not elements.
   get moreDetailsSelector() { return '.toggleMoreDetails'; }
   get offerApplyButtonSelector() { return '.applyButton'; }
@@ -52,6 +54,17 @@ class OurMortgageRatesPage {
     if (this.updatingOverlay.isDisplayed()) {
       // The second argument negates the wait condition.
       this.updatingOverlay.waitForDisplayed(undefined, true);
+    }
+  }
+
+  /**
+   * If the "give us feedback" pop-up is displayed get rid of it.
+   */
+  dismissFeedback() {
+    if (this.feedbackNoButton.isDisplayed()) {
+      this.feedbackNoButton.click();
+      // Wait for for the button to not be visible.
+      this.feedbackNoButton.waitForDisplayed(undefined, true);
     }
   }
 
@@ -104,9 +117,12 @@ class OurMortgageRatesPage {
     if (mortgage.isFixed()) {
       // To do: figure out how sometimes this results
       // in "tracker" being clicked.
+      this.fixedRateCheck.waitForDisplayed();
+      browser.pause(3000); // This seems to avoid the misfired event.
       this.fixedRateCheck.waitForClickable();
       this.fixedRateCheck.click();
       this.waitForResultsUpdate();
+      this.dismissFeedback();
     } else {
       /* eslint-disable prefer-destructuring */
       const type = mortgage.data.preferences.type;
@@ -120,6 +136,7 @@ class OurMortgageRatesPage {
       this.withFeeCheck.waitForClickable();
       this.withFeeCheck.click();
       this.waitForResultsUpdate();
+      this.dismissFeedback();
     } else {
       /* eslint-disable prefer-destructuring */
       const type = mortgage.data.preferences.hasFee;
@@ -136,6 +153,7 @@ class OurMortgageRatesPage {
    */
   getOfferNames() {
     // Wait for the results to come in.
+    this.dismissFeedback();
     this.newMortgageResultsContainer.waitForDisplayed();
     this.indicativeFixedResult.waitForDisplayed();
 
@@ -155,8 +173,8 @@ class OurMortgageRatesPage {
    * @param  {String} dataProductName Preferred data-product-name.
    */
   startApplication(dataProductName) {
-    browser.debug();
-    
+    this.dismissFeedback();
+
     const preferredOfferEl = $(`tr[data-product-name="${dataProductName}"]`);
     preferredOfferEl.waitForExist();
     preferredOfferEl.scrollIntoView();

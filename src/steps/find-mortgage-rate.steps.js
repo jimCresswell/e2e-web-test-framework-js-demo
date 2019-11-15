@@ -1,5 +1,3 @@
-/* eslint prefer-destructuring: off */
-
 import { assert } from 'chai';
 import { Given, When, Then } from 'cucumber';
 
@@ -33,7 +31,9 @@ When(
 );
 
 Then(/^I am shown "(.*)" mortgage options$/, (mortgageType) => {
+  /* eslint-disable prefer-destructuring */
   const expectedOffers = mortgages.getByType(mortgageType).expectedOffers;
+  /* eslint-enable prefer-destructuring */
   const actualOffers = ourMortgageRatesPage.getOfferNames();
 
   assert.equal(expectedOffers, actualOffers, 'Offers should match.');

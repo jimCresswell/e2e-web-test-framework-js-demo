@@ -1,9 +1,8 @@
-/* eslint require-jsdoc: off */
-
 /**
  * The shared navigation section.
  */
 class NavigationSection {
+  /* eslint-disable require-jsdoc */
   get navMenu() { return $('#NavMenu'); }
 
   get mortgagesNav() { return $('#MortgagesNavItem'); }
@@ -13,6 +12,7 @@ class NavigationSection {
       .$('nav[aria-label="New mortgage customers"]')
       .$('=Mortgage rates');
   }
+  /* eslint-enable require-jsdoc */
 
   /**
    * Navigate to the new mortgages rates page.

@@ -22,6 +22,7 @@ The feature files are [here](src/features), written in a [Specification by Examp
 ### Improvements
 
   * Abstract shared page object members and methods to a generic `PageObject` class.
+  * Implement a workaround for `@pending` tags on example groups in features (see the `@cleanSlate` tag code in wdio.conf.js for an example) and create a PR to add the functionality to CucumberJS.
   * Explicitly handle behaviour differences for narrow and wide viewports (e.g. the considerable differences in navigation section behaviour).
   * Add other example `@pending` user and mortgage types to the feature with notes on how to implement them.
 

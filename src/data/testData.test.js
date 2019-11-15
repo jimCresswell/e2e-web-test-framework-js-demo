@@ -21,8 +21,8 @@ describe('TestData class', function() {
 
     expect(data.dataClass).to.equal(dataClassName);
     expect(data.types).to.include.all.keys('type1', 'type2');
-    expect(data.getByType('type1')).to.equal(type1);
-    expect(data.getByType('type2')).to.equal(type2);
+    expect(data.getByType('type1').data).to.equal(type1);
+    expect(data.getByType('type2').data).to.equal(type2);
   });
 
   it('throws an error when an unknown type is requested.', function() {

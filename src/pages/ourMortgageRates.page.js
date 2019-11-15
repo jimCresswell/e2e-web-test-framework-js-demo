@@ -1,11 +1,10 @@
-/* eslint require-jsdoc: off, max-len: off, lines-between-class-members: off */
-
 import navigationSection from './navigation.section';
 
 /**
  * Page object for the default URL page.
  */
 class OurMortgageRatesPage {
+  /* eslint-disable require-jsdoc, lines-between-class-members, max-len */
   get hasNationwideMortgage() { return $('#selectorItemHaveNationwideMortgage0'); }
   get doesNotHaveNationwideMortgage() { return $('#selectorItemHaveNationwideMortgage1'); }
   get changingLender() { return $('#selectorItemNationwideMortgageTypeNo2'); }
@@ -21,17 +20,17 @@ class OurMortgageRatesPage {
   get withFeeCheck() { return ('#product-fee-fee'); }
 
   get newMortgageResultsContainer() { return $('#NewMortgageRateTables'); }
-  get fixedResults() {
+  get fixedMortgageResults() {
     return this.newMortgageResultsContainer
       .$$('ratesTableBody tr[data-product-name*="Fixed"]');
   }
 
-  get fiveYrFixed() { return $('tr[data-product-name="5 yr  Fixed "]'); }
+  get fiveYrFixedResult() { return $('tr[data-product-name="5 yr  Fixed "]'); }
 
-  // selector for toggle more detail button per result.
-  // .toggleMoreDetails
-  // Apply button per result
-  // .applyButton
+  // Selectors for chaining. Note these are selectors not elements.
+  get moreDetailsSelector() { return '.toggleMoreDetails'; }
+  get offerApplyButtonSelector() { return '.applyButton'; }
+  /* eslint-enable require-jsdoc, lines-between-class-members, max-len */
 
   /**
    * Mix in the navigation section.
@@ -53,8 +52,6 @@ class OurMortgageRatesPage {
    * @param  {Object} user The user data
    */
   enterUserDetails(user) {
-    console.log(user);
-
     if (user.hasNationwideMortgage) {
       this.hasNationwideMortgage.waitForDisplayed();
       this.hasNationwideMortgage.click();
@@ -68,20 +65,36 @@ class OurMortgageRatesPage {
       this.changingLender.waitForDisplayed();
       this.changingLender.click();
     } else {
-      throw new TypeError(`Application type "${user.applicationType}" is not implemented yet.`);
+      throw new TypeError(
+        `Application type "${user.applicationType}" is not implemented yet.`
+      );
     }
   }
 
+  /**
+   * Enter the user's mortgage preferences.
+   *
+   * To do: remodel as per /README.md#alternative-domain-modelling
+   * @param  {Object} preferences Preferences regarding the new mortgage.
+   */
   enterMortgagePreferences(preferences) {
     console.log(preferences);
   }
 
+  /**
+   * Get a list of mortgage offer names from the UI.
+   * @return {Array} A list of names.
+   */
   getOfferNames() {
     console.log('get offer names');
     return ['not', 'real', 'offers'];
   }
 
-  startApplication() {
+  /**
+   * Start the application for the preferred offer type.
+   * @param  {String} offerPreference Preferred offer type description.
+   */
+  startApplication(offerPreference) {
     console.log('start application');
   }
 }

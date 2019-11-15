@@ -26,6 +26,7 @@ const TYPES = {
     preferences: {
       type: 'fixed',
       hasFee: true,
+      offerPreference: new Offer(5, 'fixed'),
     },
     expectedOffers: [
       new Offer(2, 'fixed'),

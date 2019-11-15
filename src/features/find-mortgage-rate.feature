@@ -11,4 +11,4 @@ Feature: Find a mortgage rate
     Given I'm looking for information on new mortgages
     When I enter my details as a "remortgaging" customer looking for a "fixed with fee" mortgage
     Then I am shown "fixed with fee" mortgage options
-    And I can start a remortgage application
+    And I can start a "fixed with fee" remortgaging application

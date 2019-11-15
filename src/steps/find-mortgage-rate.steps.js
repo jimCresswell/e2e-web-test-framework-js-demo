@@ -39,8 +39,10 @@ Then(/^I am shown "(.*)" mortgage options$/, (mortgageType) => {
   assert.equal(expectedOffers, actualOffers, 'Offers should match.');
 });
 
-Then(/^I can start a remortgage application$/, () => {
-  ourMortgageRatesPage.startApplication();
+Then(/^I can start a "(.*)" application$/, (mortgageType) => {
+  const mortgagePreferences = mortgages.getByType(mortgageType).preferences;
+  const offerPreferenceString = mortgagePreferences.offerPreference.toString();
+  ourMortgageRatesPage.startApplication(offerPreferenceString);
 
   assert.isTrue(
     readyToApplyPage.isRemortgagePage(),

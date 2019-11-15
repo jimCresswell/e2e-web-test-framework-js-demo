@@ -3,7 +3,7 @@ Feature: Find a mortgage rate
   I want to find the mortgage rates available
   So that I can decide whether to switch my mortgage to Nationwide
 
-  Scenario Outline: Find a mortgage rate
+  Scenario Outline: Finding mortgage rates for different users
     The scenario format focusses on human interactions rather than UI design,
     and is designed to be trivially extended to other customer and mortgage
     types.

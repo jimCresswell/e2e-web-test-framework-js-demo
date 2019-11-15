@@ -10,6 +10,7 @@ class TestData {
   constructor(dataClass, types) {
     this.dataClass = dataClass;
     this.types = types;
+    this.data = {};
   }
 
   /**
@@ -29,7 +30,9 @@ class TestData {
   getByType(type) {
     const typeNoSpaces = type.replace(/\s/g, '_');
     if (Object.prototype.hasOwnProperty.call(this.types, typeNoSpaces)) {
-      return this.types[typeNoSpaces];
+      // Expose the specific type in the `data` field.
+      this.data = this.types[typeNoSpaces];
+      return this;
     }
     throw new TypeError(
       `Unsupported ${this.dataClass} type "${typeNoSpaces}".

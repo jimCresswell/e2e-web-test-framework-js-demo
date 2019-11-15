@@ -11,7 +11,7 @@ class OurMortgageRatesPage {
   get propertyValue() { return $('#SearchPropertyValue'); }
   get mortgageAmount() { return $('#SearchMortgageAmount'); }
   get mortgageTerm() { return $('#SearchMortgageTerm'); }
-  get findARateButton() { return $('button="Find a mortgage rate"'); }
+  get findARateButton() { return $('button=Find a mortgage rate'); }
 
   get resultsHeader() { return $('h3*="mortgages for you"'); }
   get updatingOverlay() { return $('#updatingOverlay'); }
@@ -49,10 +49,11 @@ class OurMortgageRatesPage {
 
   /**
    * Enter the user's details on the page.
-   * @param  {Object} user The user data
+   * @param  {TestData} user The user data
    */
   enterUserDetails(user) {
-    if (user.hasNationwideMortgage) {
+    // Has existing NW mortgage, yes/no.
+    if (user.hasNationwideMortgage()) {
       this.hasNationwideMortgage.waitForDisplayed();
       this.hasNationwideMortgage.click();
     } else {
@@ -61,24 +62,47 @@ class OurMortgageRatesPage {
     }
 
     // To do: replace with switch statement when other selectors implemneted.
-    if (user.applicationType === 'changing lender') {
+    // Application type.
+    if (user.isChangingLender()) {
       this.changingLender.waitForDisplayed();
       this.changingLender.click();
     } else {
+      const type = user.data.applicationType;
       throw new TypeError(
-        `Application type "${user.applicationType}" is not implemented yet.`
+        `Application type "${type}" is not implemented yet.`
       );
     }
+
+    // Numeric values.
+    // To do: may have to implement waiting for overlay for stability.
+    this.propertyValue.setValue(user.data.porpertyValue);
+    this.mortgageAmount.setValue(user.data.mortgageAmount);
+    this.mortgageTerm.setValue(user.data.termLengthYears);
+
+    // Request offers.
+    this.findARateButton.waitForClickable();
+    this.findARateButton.click();
   }
 
   /**
    * Enter the user's mortgage preferences.
    *
    * To do: remodel as per /README.md#alternative-domain-modelling
-   * @param  {Object} preferences Preferences regarding the new mortgage.
+   * @param  {TestData} mortgage Mortgage data including user preferences.
    */
-  enterMortgagePreferences(preferences) {
-    console.log(preferences);
+  enterMortgagePreferences(mortgage) {
+    this.resultsHeader.waitForDisplayed();
+
+    if (mortgage.isFixed()) {
+      this.fixedRateCheck.click();
+    } else {
+      /* eslint-disable prefer-destructuring */
+      const type = mortgage.data.preferences.type;
+      /* eslint-enable prefer-destructuring */
+      throw new TypeError(
+        `Mortgage type "${type}" is not implemented yet.`
+      );
+    }
   }
 
   /**
@@ -95,7 +119,7 @@ class OurMortgageRatesPage {
    * @param  {String} offerPreference Preferred offer type description.
    */
   startApplication(offerPreference) {
-    console.log('start application');
+    console.log('start application for ' + offerPreference);
   }
 }
 

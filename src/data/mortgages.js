@@ -6,6 +6,8 @@ import TestData from './testData';
 
 const DATA_CLASS = 'mortgage';
 
+const FIXED = 'fixed';
+
 /**
  * Mortgage offer types.
 */
@@ -24,19 +26,22 @@ class Offer {
 const TYPES = {
   fixed_with_fee: {
     preferences: {
-      type: 'fixed',
+      type: FIXED,
       hasFee: true,
-      offerPreference: new Offer(5, 'fixed'),
+      offerPreference: new Offer(5, FIXED),
     },
     expectedOffers: [
-      new Offer(2, 'fixed'),
-      new Offer(3, 'fixed'),
-      new Offer(5, 'fixed'),
-      new Offer(10, 'fixed'),
+      new Offer(2, FIXED),
+      new Offer(3, FIXED),
+      new Offer(5, FIXED),
+      new Offer(10, FIXED),
     ],
   },
 };
 
-
 const mortgageData = new TestData(DATA_CLASS, TYPES);
+mortgageData.isFixed = function isFixed() {
+  return this.data.preferences.type === FIXED;
+};
+
 export default mortgageData;

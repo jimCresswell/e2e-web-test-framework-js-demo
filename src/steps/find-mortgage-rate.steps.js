@@ -23,10 +23,10 @@ When(
   /^I enter my details as a "(.*)" customer looking for a "(.*)" mortgage$/,
   (userType, mortgageType) => {
     const user = users.getByType(userType);
-    const mortgagePreferences = mortgages.getByType(mortgageType).preferences;
+    const mortgage = mortgages.getByType(mortgageType);
 
     ourMortgageRatesPage.enterUserDetails(user);
-    ourMortgageRatesPage.enterMortgagePreferences(mortgagePreferences);
+    ourMortgageRatesPage.enterMortgagePreferences(mortgage);
   }
 );
 

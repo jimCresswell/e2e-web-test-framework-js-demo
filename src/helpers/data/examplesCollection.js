@@ -1,24 +1,24 @@
 /**
- * Container for sets of examples to be used as test data.
+ * A collection of examples to be used as test data.
  */
-class ExamplesContainer {
+class ExamplesCollection {
   /**
    * Define the test data at instantiation.
-   * @param {String} dataType The broad type of data, e.g. user, tree, icecream.
+   * @param {String} collectionName The broad type of data, e.g. user, icecream.
    * @param {Object} examples Examples of specific instances of the type.
    */
-  constructor(dataType, examples) {
-    this.dataType = dataType;
+  constructor(collectionName, examples) {
+    this.collectionName = collectionName;
     this.examples = examples;
     this.data = null;
   }
 
   /**
-   * Return the objects data type.
-   * @return {String} The data type.
+   * Returns the name of the example collection.
+   * @return {String} The collection name.
    */
-  getType() {
-    return this.dataType;
+  getName() {
+    return this.collectionName;
   }
 
   /**
@@ -49,7 +49,7 @@ class ExamplesContainer {
       return this;
     }
     throw new TypeError(
-      `Unsupported ${this.dataType} example "${exampleNameNoSpaces}".
+      `Unsupported ${this.collectionName} example "${exampleNameNoSpaces}".
       Available examples are: ${this.getExampleNames()}`
     );
   }
@@ -66,4 +66,4 @@ class ExamplesContainer {
   }
 }
 
-export default ExamplesContainer;
+export default ExamplesCollection;

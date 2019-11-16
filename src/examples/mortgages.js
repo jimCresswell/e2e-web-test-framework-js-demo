@@ -2,7 +2,7 @@
  * Singleton mortgage test data examples.
  */
 
-import ExamplesContainer from '../helpers/examplesContainer/examplesContainer';
+import ExamplesCollection from '../helpers/data/examplesCollection';
 import Offer from './offer';
 
 const DATA_CLASS = 'mortgage';
@@ -25,7 +25,7 @@ const TYPES = {
   },
 };
 
-const mortgages = new ExamplesContainer(DATA_CLASS, TYPES);
+const mortgages = new ExamplesCollection(DATA_CLASS, TYPES);
 mortgages.isFixed = function isFixed() {
   this.checkExampleIsSet();
   return this.data.preferences.rateType === FIXED;

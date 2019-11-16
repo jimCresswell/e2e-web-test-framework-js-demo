@@ -2,7 +2,7 @@
  * Singleton user test data examples.
  */
 
-import ExamplesContainer from '../helpers/examplesContainer/examplesContainer';
+import ExamplesCollection from '../helpers/data/examplesCollection';
 
 const DATA_CLASS = 'user';
 
@@ -25,7 +25,7 @@ const TYPES = {
   },
 };
 
-const users = new ExamplesContainer(DATA_CLASS, TYPES);
+const users = new ExamplesCollection(DATA_CLASS, TYPES);
 users.hasNationwideMortgage = function hasNationwideMortgage() {
   this.checkExampleIsSet();
   return this.data.hasNationwideMortgage;

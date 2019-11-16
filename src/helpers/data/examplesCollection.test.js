@@ -9,23 +9,23 @@ space-before-function-paren: off
 
 import { expect } from 'chai';
 
-import ExamplesContainer from './examplesContainer';
+import ExamplesCollection from './examplesCollection';
 
-describe('ExamplesContainer class', function() {
+describe('ExamplesCollection class', function() {
   describe('contains', function() {
     before(function() {
-      this.dataTypeName = 'A type of thing';
+      this.collectionName = 'A type of thing';
       this.example1 = [1, 2, 3];
       this.example2 = { hello: 'hello' };
       const exampleData = {
         example1: this.example1,
         example2: this.example2,
       };
-      this.examples = new ExamplesContainer(this.dataTypeName, exampleData);
+      this.examples = new ExamplesCollection(this.collectionName, exampleData);
     });
 
     it('the expected overall examples type name.', function() {
-      expect(this.examples.getType()).to.equal(this.dataTypeName);
+      expect(this.examples.getName()).to.equal(this.collectionName);
     });
 
     it('the expected individual example names.', function() {
@@ -48,7 +48,7 @@ describe('ExamplesContainer class', function() {
         dog: 'woof',
         cat: 'feed me',
       };
-      const examples = new ExamplesContainer(dataClassName, exampleData);
+      const examples = new ExamplesCollection(dataClassName, exampleData);
 
       expect(() => examples.setCurrentExample('elephant'))
         .to.throw(TypeError)
@@ -61,7 +61,7 @@ describe('ExamplesContainer class', function() {
     // Note: the point of the refactor is to get rid of this necessity.
     it('when checkExampleIsSet is called when no example set', function() {
       const dataTypeName = 'A different type of thing';
-      const examples = new ExamplesContainer(dataTypeName, { example1: 'a' });
+      const examples = new ExamplesCollection(dataTypeName, { example1: 'a' });
       expect(() => examples.checkExampleIsSet()).to.throw(TypeError);
     });
   });

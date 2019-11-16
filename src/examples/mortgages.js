@@ -5,11 +5,12 @@
 import ExamplesCollection from '../helpers/data/examplesCollection';
 import Offer from './offer';
 
-const DATA_CLASS = 'mortgage';
+const COLLECTION_NAME = 'mortgages';
 
+// Constants.
 const FIXED = 'Fixed';
 
-const TYPES = {
+const EXAMPLES = {
   fixed_with_fee: {
     preferences: {
       rateType: FIXED,
@@ -25,7 +26,7 @@ const TYPES = {
   },
 };
 
-const mortgages = new ExamplesCollection(DATA_CLASS, TYPES);
+const mortgages = new ExamplesCollection(COLLECTION_NAME, EXAMPLES);
 mortgages.isFixed = function isFixed() {
   this.checkExampleIsSet();
   return this.currentExample.preferences.rateType === FIXED;

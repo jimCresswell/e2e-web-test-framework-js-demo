@@ -4,11 +4,12 @@
 
 import ExamplesCollection from '../helpers/data/examplesCollection';
 
-const DATA_CLASS = 'user';
+const COLLECTION_NAME = 'users';
 
+// Constants.
 const CHANGING_LENDER = 'changing lender';
 
-const TYPES = {
+const EXAMPLES = {
   _test: {
     hasNationwideMortgage: false,
     applicationType: 'test application type',
@@ -25,7 +26,12 @@ const TYPES = {
   },
 };
 
-const users = new ExamplesCollection(DATA_CLASS, TYPES);
+
+const users = new ExamplesCollection(COLLECTION_NAME, EXAMPLES);
+
+// To do: These functions should be on individual user objects,
+// e.g. decorate the instances of Example with these functions at creation.
+// const users = new ExamplesCollection(COLLECTION_NAME, EXAMPLES, EXAMPLE_METHODS);
 users.hasNationwideMortgage = function hasNationwideMortgage() {
   this.checkExampleIsSet();
   return this.currentExample.hasNationwideMortgage;

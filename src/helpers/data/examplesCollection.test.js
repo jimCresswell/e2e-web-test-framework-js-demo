@@ -21,6 +21,9 @@ describe('ExamplesCollection class', function() {
         example1: this.example1,
         example2: this.example2,
       };
+
+      // To do: create methods to decorate individual examples with.
+
       this.examples = new ExamplesCollection(this.collectionName, exampleData);
     });
 

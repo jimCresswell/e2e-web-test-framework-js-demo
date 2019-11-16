@@ -96,7 +96,7 @@ class OurMortgageRatesPage {
 
     // Numeric values.
     // To do: may have to implement waiting for overlay for stability.
-    this.propertyValue.setValue(user.data.porpertyValue);
+    this.propertyValue.setValue(user.data.propertyValue);
     this.mortgageAmount.setValue(user.data.mortgageAmount);
     this.mortgageTerm.setValue(user.data.termLengthYears);
 
@@ -118,7 +118,7 @@ class OurMortgageRatesPage {
       // To do: figure out how sometimes this results
       // in "tracker" being clicked.
       this.fixedRateCheck.waitForDisplayed();
-      browser.pause(3000); // This seems to avoid the misfired event.
+      browser.pause(1000); // This seems to avoid the misfired event.
       this.fixedRateCheck.waitForClickable();
       this.fixedRateCheck.click();
       this.waitForResultsUpdate();

@@ -5,8 +5,8 @@ import mainPage from '../pages/main.page';
 import ourMortgageRatesPage from '../pages/ourMortgageRates.page';
 import readyToApplyPage from '../pages/readyToApply.page';
 
-import users from '../data/users';
-import mortgages from '../data/mortgages';
+import users from '../examples/users';
+import mortgages from '../examples/mortgages';
 
 // It doesn't matter that this is `given` rather than `when`,
 // the different step types only exist for human readability.
@@ -22,8 +22,8 @@ Given(/^I'm looking for information on new mortgages$/, () => {
 When(
   /^I enter my details as a "(.*)" customer looking for a "(.*)" mortgage$/,
   (userType, mortgageType) => {
-    const user = users.getByType(userType);
-    const mortgage = mortgages.getByType(mortgageType);
+    const user = users.setCurrentExample(userType);
+    const mortgage = mortgages.setCurrentExample(mortgageType);
 
     ourMortgageRatesPage.enterUserDetails(user);
     ourMortgageRatesPage.enterMortgagePreferences(mortgage);
@@ -32,7 +32,7 @@ When(
 
 Then(/^I am shown "(.*)" mortgage options$/, (mortgageType) => {
   const expectedOffers = mortgages
-    .getByType(mortgageType)
+    .setCurrentExample(mortgageType)
     .getExpectedOffers()
     .map((offer) => offer.toString());
 
@@ -42,7 +42,7 @@ Then(/^I am shown "(.*)" mortgage options$/, (mortgageType) => {
 });
 
 Then(/^I can start a "(.*)" mortgage application$/, (mortgageType) => {
-  const mortgage = mortgages.getByType(mortgageType);
+  const mortgage = mortgages.setCurrentExample(mortgageType);
   const dataProductName = mortgage.getPreferredProductName();
   ourMortgageRatesPage.startApplication(dataProductName);
 

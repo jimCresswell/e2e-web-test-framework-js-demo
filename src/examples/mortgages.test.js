@@ -10,15 +10,15 @@ no-unused-expressions: off
 
 import { expect } from 'chai';
 
-import mortgageData from './mortgages';
+import mortgages from './mortgages';
 
 describe('MortgageData instance', function() {
-  it('can get data by type', function() {
-    const mortgage = mortgageData.getByType('fixed_with_fee');
+  it('can get an example by name', function() {
+    const mortgage = mortgages.setCurrentExample('fixed_with_fee');
     expect(mortgage.isFixed()).to.be.true;
   });
 
   it('throws an error if type has not been set', function() {
-    expect(mortgageData.isFixed).to.throw(TypeError);
+    expect(mortgages.isFixed).to.throw(TypeError);
   });
 });

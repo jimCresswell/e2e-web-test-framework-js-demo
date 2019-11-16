@@ -1,8 +1,8 @@
 /**
- * Singleton mortgage data object.
+ * Singleton mortgage test data examples.
  */
 
-import TestData from './testData';
+import ExamplesContainer from '../helpers/examplesContainer/examplesContainer';
 import Offer from './offer';
 
 const DATA_CLASS = 'mortgage';
@@ -25,22 +25,22 @@ const TYPES = {
   },
 };
 
-const mortgageData = new TestData(DATA_CLASS, TYPES);
-mortgageData.isFixed = function isFixed() {
-  this.checkTypeIsSet();
+const mortgages = new ExamplesContainer(DATA_CLASS, TYPES);
+mortgages.isFixed = function isFixed() {
+  this.checkExampleIsSet();
   return this.data.preferences.rateType === FIXED;
 };
-mortgageData.hasFee = function isFixed() {
-  this.checkTypeIsSet();
+mortgages.hasFee = function isFixed() {
+  this.checkExampleIsSet();
   return this.data.preferences.hasFee;
 };
-mortgageData.getExpectedOffers = function getExpectedOffer() {
-  this.checkTypeIsSet();
+mortgages.getExpectedOffers = function getExpectedOffer() {
+  this.checkExampleIsSet();
   return this.data.expectedOffers;
 };
-mortgageData.getPreferredProductName = function getPreferredProductName() {
-  this.checkTypeIsSet();
+mortgages.getPreferredProductName = function getPreferredProductName() {
+  this.checkExampleIsSet();
   return this.data.preferences.offerPreference.toDataProductName();
 };
 
-export default mortgageData;
+export default mortgages;

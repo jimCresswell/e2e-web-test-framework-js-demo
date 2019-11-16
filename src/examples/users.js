@@ -3,6 +3,7 @@
  */
 
 import ExamplesCollection from '../helpers/data/examplesCollection';
+import Example from '../helpers/data/example';
 
 const COLLECTION_NAME = 'users';
 
@@ -26,12 +27,28 @@ const EXAMPLES = {
   },
 };
 
+/**
+ * Individual user class containing methods to add to above examples.
+ */
+class User extends Example {
+  /* eslint-disable require-jsdoc */
+  hasNationwideMortgage() {
+    return this.currentExample.hasNationwideMortgage;
+  }
 
-const users = new ExamplesCollection(COLLECTION_NAME, EXAMPLES);
+  isChangingLender() {
+    return this.currentExample.applicationType === CHANGING_LENDER;
+  }
 
-// To do: These functions should be on individual user objects,
-// e.g. decorate the instances of Example with these functions at creation.
-// const users = new ExamplesCollection(COLLECTION_NAME, EXAMPLES, EXAMPLE_METHODS);
+  getApplicationType() {
+    return this.applicationType;
+  }
+  /* eslint-enable require-jsdoc */
+}
+
+const users = new ExamplesCollection(COLLECTION_NAME, User.decorate(EXAMPLES));
+
+// To do: Refactor getExample to give single example, then remove these.
 users.hasNationwideMortgage = function hasNationwideMortgage() {
   this.checkExampleIsSet();
   return this.currentExample.hasNationwideMortgage;

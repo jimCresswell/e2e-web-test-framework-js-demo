@@ -20,4 +20,8 @@ describe('Users instance', function() {
   it('has a property value', function() {
     expect(this.user.currentExample.propertyValue).to.not.be.undefined;
   });
+
+  it('has method getApplicationType', function() {
+    expect(this.user.currentExample.getApplicationType).to.not.be.undefined;
+  });
 });

@@ -33,11 +33,11 @@ const EXAMPLES = {
 class User extends Example {
   /* eslint-disable require-jsdoc */
   hasNationwideMortgage() {
-    return this.currentExample.hasNationwideMortgage;
+    return this.hasNationwideMortgage;
   }
 
   isChangingLender() {
-    return this.currentExample.applicationType === CHANGING_LENDER;
+    return this.applicationType === CHANGING_LENDER;
   }
 
   getApplicationType() {

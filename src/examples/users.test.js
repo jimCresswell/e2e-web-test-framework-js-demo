@@ -18,6 +18,6 @@ describe('Users instance', function() {
   });
 
   it('has a property value', function() {
-    expect(this.user.data.propertyValue).to.not.be.undefined;
+    expect(this.user.currentExample.propertyValue).to.not.be.undefined;
   });
 });

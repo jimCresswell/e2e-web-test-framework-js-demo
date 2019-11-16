@@ -34,9 +34,9 @@ describe('ExamplesCollection class', function() {
     });
 
     it('the expected individual examples.', function() {
-      expect(this.examples.setCurrentExample('example1').data)
+      expect(this.examples.setCurrentExample('example1').currentExample)
         .to.equal(this.example1);
-      expect(this.examples.setCurrentExample('example2').data)
+      expect(this.examples.setCurrentExample('example2').currentExample)
         .to.equal(this.example2);
     });
   });

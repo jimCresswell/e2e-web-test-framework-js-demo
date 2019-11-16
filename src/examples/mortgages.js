@@ -28,19 +28,19 @@ const TYPES = {
 const mortgages = new ExamplesCollection(DATA_CLASS, TYPES);
 mortgages.isFixed = function isFixed() {
   this.checkExampleIsSet();
-  return this.data.preferences.rateType === FIXED;
+  return this.currentExample.preferences.rateType === FIXED;
 };
 mortgages.hasFee = function isFixed() {
   this.checkExampleIsSet();
-  return this.data.preferences.hasFee;
+  return this.currentExample.preferences.hasFee;
 };
 mortgages.getExpectedOffers = function getExpectedOffer() {
   this.checkExampleIsSet();
-  return this.data.expectedOffers;
+  return this.currentExample.expectedOffers;
 };
 mortgages.getPreferredProductName = function getPreferredProductName() {
   this.checkExampleIsSet();
-  return this.data.preferences.offerPreference.toDataProductName();
+  return this.currentExample.preferences.offerPreference.toDataProductName();
 };
 
 export default mortgages;

@@ -28,11 +28,11 @@ const TYPES = {
 const users = new ExamplesCollection(DATA_CLASS, TYPES);
 users.hasNationwideMortgage = function hasNationwideMortgage() {
   this.checkExampleIsSet();
-  return this.data.hasNationwideMortgage;
+  return this.currentExample.hasNationwideMortgage;
 };
 users.isChangingLender = function isChangingLender() {
   this.checkExampleIsSet();
-  return this.data.applicationType === CHANGING_LENDER;
+  return this.currentExample.applicationType === CHANGING_LENDER;
 };
 
 

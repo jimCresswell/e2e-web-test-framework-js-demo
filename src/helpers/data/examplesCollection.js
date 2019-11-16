@@ -10,7 +10,7 @@ class ExamplesCollection {
   constructor(collectionName, examples) {
     this.collectionName = collectionName;
     this.examples = examples;
-    this.data = null;
+    this.currentExample = null;
   }
 
   /**
@@ -45,7 +45,7 @@ class ExamplesCollection {
     );
     if (exampleExists) {
       // Expose the specific example in the `data` field.
-      this.data = this.examples[exampleNameNoSpaces];
+      this.currentExample = this.examples[exampleNameNoSpaces];
       return this;
     }
     throw new TypeError(
@@ -58,7 +58,7 @@ class ExamplesCollection {
    * If a data accessor is called before a type is set throw an error.
    */
   checkExampleIsSet() {
-    if (this.data === null) {
+    if (this.currentExample === null) {
       throw new TypeError(
         'TestData accessor called before setting type with `getByType`'
       );

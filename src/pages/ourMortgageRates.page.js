@@ -88,7 +88,7 @@ class OurMortgageRatesPage {
       this.changingLender.waitForDisplayed();
       this.changingLender.click();
     } else {
-      const type = user.data.applicationType;
+      const type = user.currentExample.applicationType;
       throw new TypeError(
         `Application type "${type}" is not implemented yet.`
       );
@@ -96,9 +96,9 @@ class OurMortgageRatesPage {
 
     // Numeric values.
     // To do: may have to implement waiting for overlay for stability.
-    this.propertyValue.setValue(user.data.propertyValue);
-    this.mortgageAmount.setValue(user.data.mortgageAmount);
-    this.mortgageTerm.setValue(user.data.termLengthYears);
+    this.propertyValue.setValue(user.currentExample.propertyValue);
+    this.mortgageAmount.setValue(user.currentExample.mortgageAmount);
+    this.mortgageTerm.setValue(user.currentExample.termLengthYears);
 
     // Request offers.
     this.findARateButton.waitForClickable();
@@ -125,7 +125,7 @@ class OurMortgageRatesPage {
       this.dismissFeedback();
     } else {
       /* eslint-disable prefer-destructuring */
-      const type = mortgage.data.preferences.type;
+      const type = mortgage.currentExample.preferences.type;
       /* eslint-enable prefer-destructuring */
       throw new TypeError(
         `Mortgage rate type "${type}" is not implemented yet.`
@@ -139,7 +139,7 @@ class OurMortgageRatesPage {
       this.dismissFeedback();
     } else {
       /* eslint-disable prefer-destructuring */
-      const type = mortgage.data.preferences.hasFee;
+      const type = mortgage.currentExample.preferences.hasFee;
       /* eslint-enable prefer-destructuring */
       throw new TypeError(
         `Mortgage fee type "${type}" is not implemented yet.`

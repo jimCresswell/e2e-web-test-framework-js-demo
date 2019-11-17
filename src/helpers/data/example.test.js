@@ -15,13 +15,20 @@ import Example from './example';
 describe('Example subclasses', function() {
   before(function() {
     this.simpleExamples = {
-      example1: { prop1: 'horse', prop2: 'fish' },
-      example2: { prop1: 'jam', prop2: 'France' },
+      example1: {
+        prop1: 'horse',
+        prop2: 'fish',
+      },
+      example2: {
+        prop1: 'jam',
+        prop2: 'France',
+        deliberatelyUndefined: undefined,
+      },
     };
 
     /* eslint-disable require-jsdoc */
     class ExampleSubClass extends Example {
-      getProp1() { return this.data.prop1; }
+      get prop1() { return this.data.prop1; }
     }
     /* eslint-enable require-jsdoc */
 
@@ -47,9 +54,27 @@ describe('Example subclasses', function() {
       expect(exampleName).to.equal('example1');
     });
 
-    it('that have the subclass methods', function() {
-      const prop1 = this.decoratedExamples.example1.getProp1();
+    it('that have the subclass getters', function() {
+      /* eslint-disable prefer-destructuring */
+      const prop1 = this.decoratedExamples.example1.prop1;
+      /* eslint-disable prefer-destructuring */
       expect(prop1).to.equal('horse');
     });
+
+    it(
+      'that throw on attempting to access non-existent properties',
+      function() {
+        expect(() => this.decoratedExamples.example1.notAProp)
+          .to.throw(TypeError);
+      }
+    );
+
+    it(
+      'that throw on attempting to access properties with a value of undefined',
+      function() {
+        expect(() => this.decoratedExamples.example2.deliberatelyUndefined)
+          .to.throw(TypeError);
+      }
+    );
   });
 });

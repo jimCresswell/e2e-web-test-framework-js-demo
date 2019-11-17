@@ -170,9 +170,10 @@ class OurMortgageRatesPage {
 
   /**
    * Start the application for the preferred offer type.
-   * @param  {String} dataProductName Preferred data-product-name.
+   * @param  {Offer} preferredOffer Preferred mortgage offer.
    */
-  startApplication(dataProductName) {
+  startApplication(preferredOffer) {
+    const dataProductName = preferredOffer.toDataProductName();
     this.dismissFeedback();
 
     const preferredOfferEl = $(`tr[data-product-name="${dataProductName}"]`);

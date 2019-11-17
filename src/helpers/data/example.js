@@ -29,6 +29,12 @@ class Example {
   /**
    * Decorate a collection examples by turning them into `Example` objects.
    *
+   * Note the Proxy functionality that throws a TypeError if either
+   * a non-existent property is accessed or a property with a value
+   * of `undefined`. This prevents missing properties or typos in
+   * test data properties causing `undefined` to be passed to
+   * browser interaction code.
+   *
    * The methods for decoration come from subclasses of Example,
    * see e.g. the User class src\examples\users.js .
    * @param  {Object} examples Object literal examples.
@@ -38,7 +44,26 @@ class Example {
     const decoratedExamples = {};
     Object.entries(examples).forEach((example) => {
       const [name, properties] = example;
-      decoratedExamples[name] = new this(name, properties);
+      const decoratedExample = new this(name, properties);
+
+      // Wrap the decorated example in a proxy object that throws
+      // a type error if the example property is undefined.
+      const decoratedExampleProxy = new Proxy(decoratedExample, {
+        get: function get(target, prop) {
+          if (target[prop] === undefined) {
+            throw new TypeError(
+              /* eslint-disable max-len */
+              `Property "${prop}" of object type "${target.constructor.name}" is undefined.`
+              /* eslint-enable max-len */
+            );
+          }
+          /* eslint-disable prefer-rest-params */
+          return Reflect.get(...arguments);
+          /* eslint-enable prefer-rest-params */
+        },
+      });
+
+      decoratedExamples[name] = decoratedExampleProxy;
     });
     return decoratedExamples;
   }

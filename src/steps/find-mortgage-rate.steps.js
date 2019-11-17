@@ -33,7 +33,7 @@ When(
 Then(/^I am shown "(.*)" mortgage options$/, (mortgageType) => {
   const expectedOffers = mortgages
     .getExample(mortgageType)
-    .getExpectedOffers()
+    .expectedOffers
     .map((offer) => offer.toString());
 
   const actualOffers = ourMortgageRatesPage.getOfferNames();
@@ -43,8 +43,7 @@ Then(/^I am shown "(.*)" mortgage options$/, (mortgageType) => {
 
 Then(/^I can start a "(.*)" mortgage application$/, (mortgageType) => {
   const mortgage = mortgages.getExample(mortgageType);
-  const dataProductName = mortgage.getPreferredProductName();
-  ourMortgageRatesPage.startApplication(dataProductName);
+  ourMortgageRatesPage.startApplication(mortgage.offerPreference);
 
   assert.isTrue(
     readyToApplyPage.isRemortgagePage(),

@@ -34,11 +34,6 @@ describe('Mortgages instance', function() {
     expect(this.mortgage.offerPreference).to.be.instanceof(Offer);
   });
 
-  // Not testing the exact value because that belongs in the Offer class tests.
-  it('has a preferredProductDataName value', function() {
-    expect(this.mortgage.preferredProductDataName).to.not.be.undefined;
-  });
-
   it('has an expectedOffers array of Offers', function() {
     const offers = this.mortgage.expectedOffers;
     const firstOffer = offers[0];

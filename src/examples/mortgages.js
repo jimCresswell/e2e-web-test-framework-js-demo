@@ -59,10 +59,6 @@ class Mortgage extends Example {
     return this.data.preferences.offerPreference;
   }
 
-  get preferredProductDataName() {
-    return this.data.preferences.offerPreference.toDataProductName();
-  }
-
   get expectedOffers() {
     return this.data.expectedOffers;
   }

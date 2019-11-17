@@ -9,9 +9,9 @@ The feature files are [here](src/features), written in a [Specification by Examp
 
  * Install `yarn install` or `npm install`.
  * Run the external service tests `yarn start` or `npm start`.
- * Generate and open the report `yarn report` or `npm run report`.
- * Run unit tests `yarn test` or `npm test`.
- * Run tests on file change `yarn test:watch` or `npm test:watch`.
+ * Generate and open the service test report `yarn report` or `npm run report`.
+ * Run unit tests once with coverage stats `yarn test` or `npm test`.
+ * Run unit tests continuously on file change `yarn test:watch` or `npm test:watch`.
 
 
 ## To do

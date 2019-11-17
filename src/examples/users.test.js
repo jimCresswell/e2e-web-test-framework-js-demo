@@ -14,14 +14,18 @@ import users from './users';
 
 describe('Users instance', function() {
   before(function() {
-    this.user = users.setCurrentExample('_test');
+    this.user = users.getExample('_test');
   });
 
-  it('has a property value', function() {
-    expect(this.user.currentExample.propertyValue).to.not.be.undefined;
+  it('has a mortgageAmount value', function() {
+    expect(this.user.mortgageAmount).to.equal(2);
   });
 
-  it('has method getApplicationType', function() {
-    expect(this.user.currentExample.getApplicationType).to.not.be.undefined;
+  it('has a hasNationwideMortgage value', function() {
+    expect(this.user.hasNationwideMortgage).to.be.false;
+  });
+
+  it('has an applicationType value', function() {
+    expect(this.user.applicationType).to.equal('test application type');
   });
 });

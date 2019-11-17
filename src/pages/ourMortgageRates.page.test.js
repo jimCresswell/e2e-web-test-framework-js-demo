@@ -42,8 +42,8 @@ describe('Our Mortgage Rates page object', function() {
       pause: sinon.fake(),
     };
 
-    this.user = users.setCurrentExample('remortgaging');
-    this.mortgage = mortgages.setCurrentExample('fixed with fee');
+    this.user = users.getExample('remortgaging');
+    this.mortgage = mortgages.getExample('fixed with fee');
   });
 
   after(function() {

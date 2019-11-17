@@ -21,7 +21,7 @@ describe('Example subclasses', function() {
 
     /* eslint-disable require-jsdoc */
     class ExampleSubClass extends Example {
-      getProp1() { return this.prop1; }
+      getProp1() { return this.data.prop1; }
     }
     /* eslint-enable require-jsdoc */
 
@@ -31,6 +31,13 @@ describe('Example subclasses', function() {
   describe('can create decorated examples', function() {
     it('that preserve example names', function() {
       expect(this.decoratedExamples).to.have.all.keys('example1', 'example2');
+    });
+
+    it('that copies the simple examples to a data property', function() {
+      /* eslint-disable prefer-destructuring */
+      const example = this.decoratedExamples.example1;
+      /* eslint-enable prefer-destructuring */
+      expect(example.data).to.include(this.simpleExamples.example1);
     });
 
     it('that add example names within each example', function() {

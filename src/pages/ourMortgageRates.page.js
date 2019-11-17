@@ -74,7 +74,7 @@ class OurMortgageRatesPage {
    */
   enterUserDetails(user) {
     // Has existing NW mortgage, yes/no.
-    if (user.hasNationwideMortgage()) {
+    if (user.hasNationwideMortgage) {
       this.hasNationwideMortgage.waitForDisplayed();
       this.hasNationwideMortgage.click();
     } else {
@@ -84,11 +84,11 @@ class OurMortgageRatesPage {
 
     // To do: replace with switch statement when other selectors implemneted.
     // Application type.
-    if (user.isChangingLender()) {
+    if (user.isChangingLender) {
       this.changingLender.waitForDisplayed();
       this.changingLender.click();
     } else {
-      const type = user.currentExample.applicationType;
+      const type = user.applicationType;
       throw new TypeError(
         `Application type "${type}" is not implemented yet.`
       );
@@ -96,9 +96,9 @@ class OurMortgageRatesPage {
 
     // Numeric values.
     // To do: may have to implement waiting for overlay for stability.
-    this.propertyValue.setValue(user.currentExample.propertyValue);
-    this.mortgageAmount.setValue(user.currentExample.mortgageAmount);
-    this.mortgageTerm.setValue(user.currentExample.termLengthYears);
+    this.propertyValue.setValue(user.propertyValue);
+    this.mortgageAmount.setValue(user.mortgageAmount);
+    this.mortgageTerm.setValue(user.termLengthYears);
 
     // Request offers.
     this.findARateButton.waitForClickable();
@@ -114,7 +114,7 @@ class OurMortgageRatesPage {
   enterMortgagePreferences(mortgage) {
     this.resultsHeader.waitForDisplayed();
 
-    if (mortgage.isFixed()) {
+    if (mortgage.isFixed) {
       // To do: figure out how sometimes this results
       // in "tracker" being clicked.
       this.fixedRateCheck.waitForDisplayed();
@@ -125,21 +125,21 @@ class OurMortgageRatesPage {
       this.dismissFeedback();
     } else {
       /* eslint-disable prefer-destructuring */
-      const type = mortgage.currentExample.preferences.type;
+      const type = mortgage.rateType;
       /* eslint-enable prefer-destructuring */
       throw new TypeError(
         `Mortgage rate type "${type}" is not implemented yet.`
       );
     }
 
-    if (mortgage.hasFee()) {
+    if (mortgage.hasFee) {
       this.withFeeCheck.waitForClickable();
       this.withFeeCheck.click();
       this.waitForResultsUpdate();
       this.dismissFeedback();
     } else {
       /* eslint-disable prefer-destructuring */
-      const type = mortgage.currentExample.preferences.hasFee;
+      const type = mortgage.hasFee;
       /* eslint-enable prefer-destructuring */
       throw new TypeError(
         `Mortgage fee type "${type}" is not implemented yet.`

@@ -28,7 +28,7 @@ describe('ExamplesCollection class', function() {
     });
 
     it('the expected overall examples type name.', function() {
-      expect(this.examples.getName()).to.equal(this.collectionName);
+      expect(this.examples.collectionName).to.equal(this.collectionName);
     });
 
     it('the expected individual example names.', function() {
@@ -37,9 +37,9 @@ describe('ExamplesCollection class', function() {
     });
 
     it('the expected individual examples.', function() {
-      expect(this.examples.setCurrentExample('example1').currentExample)
+      expect(this.examples.getExample('example1'))
         .to.equal(this.example1);
-      expect(this.examples.setCurrentExample('example2').currentExample)
+      expect(this.examples.getExample('example2'))
         .to.equal(this.example2);
     });
   });
@@ -53,7 +53,7 @@ describe('ExamplesCollection class', function() {
       };
       const examples = new ExamplesCollection(dataClassName, exampleData);
 
-      expect(() => examples.setCurrentExample('elephant'))
+      expect(() => examples.getExample('elephant'))
         .to.throw(TypeError)
         .with.property('message')
         .to.be.a('string')

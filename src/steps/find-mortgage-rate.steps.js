@@ -22,8 +22,8 @@ Given(/^I'm looking for information on new mortgages$/, () => {
 When(
   /^I enter my details as a "(.*)" customer looking for a "(.*)" mortgage$/,
   (userType, mortgageType) => {
-    const user = users.setCurrentExample(userType);
-    const mortgage = mortgages.setCurrentExample(mortgageType);
+    const user = users.getExample(userType);
+    const mortgage = mortgages.getExample(mortgageType);
 
     ourMortgageRatesPage.enterUserDetails(user);
     ourMortgageRatesPage.enterMortgagePreferences(mortgage);
@@ -32,7 +32,7 @@ When(
 
 Then(/^I am shown "(.*)" mortgage options$/, (mortgageType) => {
   const expectedOffers = mortgages
-    .setCurrentExample(mortgageType)
+    .getExample(mortgageType)
     .getExpectedOffers()
     .map((offer) => offer.toString());
 
@@ -42,7 +42,7 @@ Then(/^I am shown "(.*)" mortgage options$/, (mortgageType) => {
 });
 
 Then(/^I can start a "(.*)" mortgage application$/, (mortgageType) => {
-  const mortgage = mortgages.setCurrentExample(mortgageType);
+  const mortgage = mortgages.getExample(mortgageType);
   const dataProductName = mortgage.getPreferredProductName();
   ourMortgageRatesPage.startApplication(dataProductName);
 

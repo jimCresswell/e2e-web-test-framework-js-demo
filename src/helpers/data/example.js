@@ -10,11 +10,20 @@ class Example {
    * @param {[type]} example     [description]
    */
   constructor(exampleName, example) {
+    this.data = {};
     Object.entries(example).forEach((property) => {
       const [key, value] = property;
-      this[key] = value;
-      this.exampleName = exampleName;
+      this.data[key] = value;
+      this.data.exampleName = exampleName;
     });
+  }
+
+  /**
+   * Get the name of the individual example.
+   * @return {String} The example name.
+   */
+  get exampleName() {
+    return this.data.exampleName;
   }
 
   /**

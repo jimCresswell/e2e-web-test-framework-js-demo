@@ -14,14 +14,6 @@ class ExamplesCollection {
   }
 
   /**
-   * Returns the name of the example collection.
-   * @return {String} The collection name.
-   */
-  getName() {
-    return this.collectionName;
-  }
-
-  /**
    * List the available types.
    * @return {Array}  List of available types.
    */
@@ -30,39 +22,24 @@ class ExamplesCollection {
   }
 
   /**
-   * Access the test data.
+   * Get an individual example.
    * Spaces in the exampleName argument will be replaced with underscores.
    *
-   * To do: refactor to return an instance of the Example class and
-   * rename back to getExample.
    * @param  {String} exampleName A key identifying the example.
-   * @return {Object}          The test data.
+   * @return {Example}          The test data.
    */
-  setCurrentExample(exampleName) {
+  getExample(exampleName) {
     const exampleNameNoSpaces = exampleName.replace(/\s/g, '_');
     const exampleExists = Object.prototype.hasOwnProperty.call(
       this.examples, exampleNameNoSpaces
     );
     if (exampleExists) {
-      // Expose the specific example in the `data` field.
-      this.currentExample = this.examples[exampleNameNoSpaces];
-      return this;
+      return this.examples[exampleNameNoSpaces];
     }
     throw new TypeError(
       `Unsupported ${this.collectionName} example "${exampleNameNoSpaces}".
       Available examples are: ${this.getExampleNames()}`
     );
-  }
-
-  /**
-   * If a data accessor is called before a type is set throw an error.
-   */
-  checkExampleIsSet() {
-    if (this.currentExample === null) {
-      throw new TypeError(
-        'TestData accessor called before setting type with `getByType`'
-      );
-    }
   }
 }
 

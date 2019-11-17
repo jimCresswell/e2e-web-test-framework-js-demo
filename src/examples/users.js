@@ -9,11 +9,12 @@ const COLLECTION_NAME = 'users';
 
 // Constants.
 const CHANGING_LENDER = 'changing lender';
+const FIRST_HOME = 'buying my first home';
 
 const EXAMPLES = {
   _test: {
     hasNationwideMortgage: false,
-    applicationType: 'test application type',
+    applicationType: FIRST_HOME,
     propertyValue: 1,
     mortgageAmount: 2,
     termLengthYears: 3,
@@ -44,8 +45,16 @@ class User extends Example {
     return this.data.applicationType === CHANGING_LENDER;
   }
 
+  get propertyValue() {
+    return this.data.propertyValue;
+  }
+
   get mortgageAmount() {
     return this.data.mortgageAmount;
+  }
+
+  get termLengthYears() {
+    return this.data.termLengthYears;
   }
   /* eslint-enable require-jsdoc */
 }

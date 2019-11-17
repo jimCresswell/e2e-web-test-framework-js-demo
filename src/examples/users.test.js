@@ -17,15 +17,27 @@ describe('Users instance', function() {
     this.user = users.getExample('_test');
   });
 
-  it('has a mortgageAmount value', function() {
-    expect(this.user.mortgageAmount).to.equal(2);
-  });
-
   it('has a hasNationwideMortgage value', function() {
     expect(this.user.hasNationwideMortgage).to.be.false;
   });
 
   it('has an applicationType value', function() {
-    expect(this.user.applicationType).to.equal('test application type');
+    expect(this.user.applicationType).to.equal('buying my first home');
+  });
+
+  it('has a isChangingLender value', function() {
+    expect(this.user.isChangingLender).to.false;
+  });
+
+  it('has a propertyValue value', function() {
+    expect(this.user.propertyValue).to.equal(1);
+  });
+
+  it('has a mortgageAmount value', function() {
+    expect(this.user.mortgageAmount).to.equal(2);
+  });
+
+  it('has a termLengthYears value', function() {
+    expect(this.user.termLengthYears).to.equal(3);
   });
 });

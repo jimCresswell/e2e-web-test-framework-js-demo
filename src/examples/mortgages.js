@@ -10,8 +10,19 @@ const COLLECTION_NAME = 'mortgages';
 
 // Constants.
 const FIXED = 'Fixed';
+const TRACKER = 'Tracker';
 
 const EXAMPLES = {
+  _test: {
+    preferences: {
+      rateType: TRACKER,
+      hasFee: false,
+      offerPreference: new Offer(5, TRACKER),
+    },
+    expectedOffers: [
+      new Offer(5, TRACKER),
+    ],
+  },
   fixed_with_fee: {
     preferences: {
       rateType: FIXED,
@@ -42,6 +53,10 @@ class Mortgage extends Example {
 
   get hasFee() {
     return this.data.preferences.hasFee;
+  }
+
+  get offerPreference() {
+    return this.data.preferences.offerPreference;
   }
 
   get preferredProductDataName() {

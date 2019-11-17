@@ -4,7 +4,8 @@
  * This is to pick up issues with the _use_ of the test data objects within the
  * page object. This is testing implementation so is not good test practice,
  * but is much faster than running the WebdriverIO tests to see if TypeErrors
- * get thrown.
+ * get thrown. Essentially this is in lieu of compile time errors being
+ * possible.
  */
 /* eslint
 prefer-arrow-callback: off,

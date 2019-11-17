@@ -13,7 +13,7 @@ Feature: Find a mortgage rate
     Then I am shown "<mortgage type>" mortgage options
     And I can start a "<mortgage type>" mortgage application
 
-    Examples: implemented
+    Examples: major user types
       | customer type | mortgage type  |
       | remortgaging  | fixed with fee |
 

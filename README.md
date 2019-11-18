@@ -18,8 +18,9 @@ The feature files are [here](src/features), written in a [Specification by Examp
 
 ### Improvements
 
-  * Consider moving the step functionality wrapped by Cucumber into a separate file so it can be tested properly.
+  * Explore making `users` and `mortgages` into singleton classes which extend `ExamplesCollection`, and which contain inline `user` and `mortgage` classes respectively.
   * Abstract shared page object members and methods to a generic `PageObject` class.
+  * Consider moving the step functionality wrapped by Cucumber into a separate file so it can be tested properly.
   * Implement a workaround for `@pending` tags on example groups in features (see the `@cleanSlate` tag code in wdio.conf.js for an example) and create a PR to add the functionality to CucumberJS.
   * Explicitly handle behaviour differences for narrow and wide viewports (e.g. the considerable differences in navigation section behaviour).
 

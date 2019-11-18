@@ -2,8 +2,9 @@
 
 Demo using [WebdriverIO](https://webdriver.io/) with [Cucumber](https://cucumber.io/).
 
-The feature files are [here](src/features), written in a [Specification by Example](https://gojko.net/books/specification-by-example/) style.
+The feature files are [here](src/features), written in a [Specification by Example](https://gojko.net/books/specification-by-example/) style. The step definitions are [here](src/steps). The example data is in the [examples directory](src/examples), wrapped in test data convenience classes.
 
+The code design values being explicit over brevity; which helps in mixed experience teams, and particularly in the area of testing where people with "automation" experience are being trained in software engineering. The code is also quite defensive for the same reason, for instance adding test data which takes browser interactions down an unsupported path should throw a hopefully instructive error, as will attempting to access a non-existent piece of test data.
 
 ## Usage
 
@@ -33,7 +34,7 @@ The domains would then be the `User` which knows about its own `UserInformation`
 There may be a need for a third `System` domain which contains expected results that don't belong to a `Page`. E.g. an expected page title belongs in the `Page` domain, whereas the details of a returned list of mortgage types and rates is not part of the UI but depends on both backend logic (possibly versioned with the rest of the SUT and tests) and datastore state (which can possibly change dynamically without a SUT code release) and so belongs in the `System` domain.
 
 
-## Notes
+## Notes on Testing
 
 ### Cucumber and WebDriver as a Test Framework
 

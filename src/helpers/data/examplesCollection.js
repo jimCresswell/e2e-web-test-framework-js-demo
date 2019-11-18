@@ -10,7 +10,6 @@ class ExamplesCollection {
   constructor(collectionName, examples) {
     this.collectionName = collectionName;
     this.examples = examples;
-    this.currentExample = null;
   }
 
   /**

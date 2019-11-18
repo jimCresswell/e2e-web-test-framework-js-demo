@@ -60,12 +60,5 @@ describe('ExamplesCollection class', function() {
         .that.includes('dog')
         .that.includes('cat');
     });
-
-    // Note: the point of the refactor is to get rid of this necessity.
-    it('when checkExampleIsSet is called when no example set', function() {
-      const dataTypeName = 'A different type of thing';
-      const examples = new ExamplesCollection(dataTypeName, { example1: 'a' });
-      expect(() => examples.checkExampleIsSet()).to.throw(TypeError);
-    });
   });
 });

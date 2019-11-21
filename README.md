@@ -19,11 +19,11 @@ The code design values being explicit over brevity; which helps in mixed experie
 
 ### Improvements
 
-  * Explore making `users` and `mortgages` into singleton classes which extend `ExamplesCollection`, and which contain inline `user` and `mortgage` classes respectively.
   * Abstract shared page object members and methods to a generic `PageObject` class.
   * Consider moving the step functionality wrapped by Cucumber into a separate file so it can be tested properly.
   * Implement a workaround for `@pending` tags on example groups in features (see the `@cleanSlate` tag code in wdio.conf.js for an example) and create a PR to add the functionality to CucumberJS.
   * Explicitly handle behaviour differences for narrow and wide viewports (e.g. the considerable differences in navigation section behaviour).
+  * When adding further test data functionality such dynamic or random data generation, consider converting `users` and `mortgages` to classes which directly inherit from `ExamplesCollection`.
 
 #### Alternative Domain Modelling
 

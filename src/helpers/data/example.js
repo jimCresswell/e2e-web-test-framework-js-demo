@@ -19,12 +19,8 @@ class Example {
    * @param {[type]} example     [description]
    */
   constructor(exampleName, example) {
-    this.data = {};
-    Object.entries(example).forEach((property) => {
-      const [key, value] = property;
-      this.data[key] = value;
-      this.data.exampleName = exampleName;
-    });
+    this.data = example;
+    this.data.exampleName = exampleName;
 
     // Wrap the decorated example in a proxy object that throws
     // a type error if the example property is undefined.
@@ -44,18 +40,18 @@ class Example {
    *
    * The methods for decoration come from subclasses of Example,
    * see e.g. the User class src\examples\users.js .
-   * @param  {Object} examples Object literal examples.
-   * @return {Object}          [description]
+   * @param  {Object} simpleExamples Object literal examples.
+   * @return {Object}                Instantiated Example objects.
    * @static
    */
-  static decorate(examples) {
-    const decoratedExamples = {};
-    Object.entries(examples).forEach((example) => {
-      const [name, properties] = example;
-      const decoratedExample = new this(name, properties);
-      decoratedExamples[name] = decoratedExample;
+  static decorate(simpleExamples) {
+    const instantiatedExamples = {};
+    Object.entries(simpleExamples).forEach((simpleExample) => {
+      const [name, properties] = simpleExample;
+      const exampleInstance = new this(name, properties);
+      instantiatedExamples[name] = exampleInstance;
     });
-    return decoratedExamples;
+    return instantiatedExamples;
   }
 }
 

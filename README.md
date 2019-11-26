@@ -16,6 +16,7 @@ The code design values being explicit over brevity; which helps in mixed experie
  * Run the external service tests `yarn start` or `npm start`.
  * Generate and open the service test report `yarn report` or `npm run report`.
  * Run unit tests once with coverage stats `yarn test` or `npm test`.
+ * Run unit tests once for a CI environment with [Coveralls](https://coveralls.io/) reporting `yarn test:ci` or `npm test:ci`.
  * Run unit tests continuously on file change `yarn test:watch` or `npm test:watch`.
 
 

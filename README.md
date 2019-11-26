@@ -1,8 +1,9 @@
 # WDIO and Cucumber Test Demo
-[![Build Status](https://travis-ci.org/jimCresswell/sr2-nw-jim.svg?branch=master)](https://travis-ci.org/jimCresswell/sr2-nw-jim)
-[![Coverage Status](https://coveralls.io/repos/github/jimCresswell/sr2-nw-jim/badge.svg?branch=master)](https://coveralls.io/github/jimCresswell/sr2-nw-jim?branch=master)
+Travis: [![Build Status](https://travis-ci.org/jimCresswell/sr2-nw-jim.svg?branch=master)](https://travis-ci.org/jimCresswell/sr2-nw-jim)
+Coveralls: [![Coverage Status](https://coveralls.io/repos/github/jimCresswell/sr2-nw-jim/badge.svg?branch=master)](https://coveralls.io/github/jimCresswell/sr2-nw-jim?branch=master)
+Snyk: [![Known Vulnerabilities](https://snyk.io/test/github/jimCresswell/sr2-nw-jim/badge.svg?targetFile=package.json)](https://snyk.io/test/github/jimCresswell/sr2-nw-jim?targetFile=package.json)
 
-Demo using [WebdriverIO](https://webdriver.io/) with [Cucumber](https://cucumber.io/).
+End-to-end testing demo using [WebdriverIO](https://webdriver.io/) with [Cucumber](https://cucumber.io/).
 
 The feature files are [here](src/features), written in a [Specification by Example](https://gojko.net/books/specification-by-example/) style. The step definitions are [here](src/steps). The example data is in the [examples directory](src/examples), wrapped in test data convenience classes.
 

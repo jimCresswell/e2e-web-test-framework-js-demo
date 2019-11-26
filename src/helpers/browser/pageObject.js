@@ -7,6 +7,11 @@ class PageObject {
    * @param {String} url The URL for this page relative to the default base URL.
    */
   constructor(url) {
+    if (url === undefined) {
+      throw new TypeError(
+        'PageObject constructor called without passing a URL'
+      );
+    }
     this.url = url;
 
     // TO DO: mix in page sections.

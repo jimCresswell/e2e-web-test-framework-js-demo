@@ -18,9 +18,11 @@ class NavigationSection {
    * Navigate to the new mortgages rates page.
    *
    * Note that navigation element behaviour changes with viewport width.
+   *
+   * @param {Number} viewportWidth The viewport width in pixels.
    */
-  goToNewMortgageRates() {
-    if (browser.getWindowSize().width < 1024) {
+  goToNewMortgageRates(viewportWidth) {
+    if (viewportWidth < 1024) {
       this.navMenu.waitForDisplayed();
       this.navMenu.click();
 

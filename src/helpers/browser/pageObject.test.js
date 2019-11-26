@@ -22,7 +22,7 @@ describe('The PageObject base class', function() {
     global.$ = (locatorString) => locatorString;
 
     // Create an instance to test.
-    this.URL = '/a/url/string';
+    this.url = '/a/url/string';
     this.pageInstance = new PageObject(this.url);
   });
 
@@ -32,7 +32,11 @@ describe('The PageObject base class', function() {
     global.$ = this.old$;
   });
 
+  it('throws if a URL is not passed.', function() {
+    expect(() => new PageObject()).to.throw(TypeError);
+  });
+
   it('has an open method.', function() {
-    expect(this.pageInstance.open).to.be.instanceof(Function);
+    expect(() => this.pageInstance.open()).to.not.throw();
   });
 });

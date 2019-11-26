@@ -15,7 +15,8 @@ no-unused-expressions: off
 */
 
 import { expect } from 'chai';
-import sinon from 'sinon';
+
+import { mockWdio, unMockWdio } from '../helpers/browser/testHelpers';
 
 import ourMortgageRatesPage from './ourMortgageRates.page';
 import users from '../examples/users';
@@ -25,31 +26,14 @@ describe('Our Mortgage Rates page object', function() {
   // Set fakes for the WDIO `$` and `browser` objects,
   // and create the test data.
   before(function() {
-    this.old$ = global.$;
-    global.$ = function fake$(selector) {
-      return {
-        selector,
-        click: sinon.fake(),
-        isDisplayed: sinon.fake(),
-        setValue: sinon.fake(),
-        waitForDisplayed: sinon.fake(),
-        waitForClickable: sinon.fake(),
-      };
-    };
-
-    this.oldBrowser = global.browser;
-    global.browser = {
-      pause: sinon.fake(),
-    };
+    mockWdio.call(this);
 
     this.user = users.getExample('remortgaging');
     this.mortgage = mortgages.getExample('fixed with fee');
   });
 
   after(function() {
-    global.$ = this.old$;
-    global.browser = this.oldBrowser;
-    sinon.restore();
+    unMockWdio.call(this);
   });
 
   it('enterUserDetails function to not throw', function() {
@@ -59,6 +43,19 @@ describe('Our Mortgage Rates page object', function() {
 
   it('enterMortgagePreferences function to not throw', function() {
     expect(() => ourMortgageRatesPage.enterMortgagePreferences(this.mortgage))
+      .to.not.throw();
+  });
+
+  it('getOfferNames function to not throw', function() {
+    expect(() => ourMortgageRatesPage.getOfferNames())
+      .to.not.throw();
+  });
+
+  it('startApplication function to not throw', function() {
+    const fakePreferredOffer = {
+      toDataProductName: () => {},
+    };
+    expect(() => ourMortgageRatesPage.startApplication(fakePreferredOffer))
       .to.not.throw();
   });
 });

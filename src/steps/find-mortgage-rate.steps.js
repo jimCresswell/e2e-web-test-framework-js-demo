@@ -14,9 +14,10 @@ Given(/^I'm looking for information on new mortgages$/, () => {
   // Force narrow viewport behavior.
   // To do: create different steps for different viewport widths.
   browser.setWindowSize(900, 800);
+  const viewportWidth = browser.getWindowSize().width;
 
   mainPage.open();
-  mainPage.navigation.goToNewMortgageRates();
+  mainPage.navigation.goToNewMortgageRates(viewportWidth);
 });
 
 When(

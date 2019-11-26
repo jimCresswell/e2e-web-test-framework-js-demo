@@ -1,4 +1,5 @@
 # WDIO and Cucumber Test Demo
+[![Build Status](https://travis-ci.org/jimCresswell/sr2-nw-jim.svg?branch=master)](https://travis-ci.org/jimCresswell/sr2-nw-jim)
 
 Demo using [WebdriverIO](https://webdriver.io/) with [Cucumber](https://cucumber.io/).
 

@@ -6,9 +6,9 @@
   "scripts": {
     "start": "wdio wdio.conf.js",
     "start:local": "wdio wdio.conf.local.js",
-    "test": "nyc mocha --require @babel/register src/**/*.test.js",
-    "test:ci": "nyc mocha --require @babel/register src/**/*.test.js && nyc report --reporter=text-lcov | coveralls",
-    "test:watch": "mocha --watch --reporter min --require @babel/register src/**/*.test.js",
+    "test": "nyc mocha --require @babel/register 'src/**/*.test.js'",
+    "test:ci": "nyc mocha --require @babel/register 'src/**/*.test.js' && nyc report --reporter=text-lcov | coveralls",
+    "test:watch": "mocha --watch --reporter min --require @babel/register 'src/**/*.test.js'",
     "report:generate": "allure generate --clean ./allure-results -o ./allure-reports",
     "report:serve": "static -p 8000 ./allure-reports",
     "report:open": "open-cli http://127.0.0.1:8000",

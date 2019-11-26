@@ -1,22 +1,18 @@
+import PageObject from '../helpers/browser/pageObject';
 import navigationSection from './navigation.section';
 
+const URL = '/';
+
 /**
- * Page object for the default URL page.
+ * Singleton page object for the default URL page.
  */
-class MainPage {
+class MainPage extends PageObject {
   /**
    * Mix in the navigation section.
    */
   constructor() {
-    this.url = '/';
+    super(URL);
     this.navigation = navigationSection;
-  }
-
-  /**
-   * Open the page directly.
-   */
-  open() {
-    browser.url(this.url);
   }
 }
 

@@ -1,28 +1,25 @@
 /* eslint require-jsdoc: off, max-len: off, lines-between-class-members: off */
 
+import PageObject from '../helpers/browser/pageObject';
+
 import navigationSection from './navigation.section';
+
+const URL = '/products/mortgages/remortgage-to-nationwide/ready-to-apply';
 
 const REMORTGAGE_HEADER_TEXT = 'Start your Remortgage application';
 
 /**
  * Page object for the default URL page.
  */
-class ReadyToApplyPage {
+class ReadyToApplyPage extends PageObject {
   get pageHeadingEl() { return $('#pageBody h1'); }
 
   /**
    * Mix in the navigation section.
    */
   constructor() {
-    this.url = '/products/mortgages/remortgage-to-nationwide/ready-to-apply';
+    super(URL);
     this.navigation = navigationSection;
-  }
-
-  /**
-   * Open the page directly.
-   */
-  open() {
-    browser.url(this.url);
   }
 
   isRemortgagePage() {

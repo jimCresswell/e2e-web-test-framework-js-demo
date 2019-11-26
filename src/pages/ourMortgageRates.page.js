@@ -1,9 +1,13 @@
+import PageObject from '../helpers/browser/pageObject';
+
 import navigationSection from './navigation.section';
 
+const URL = '/products/mortgages/our-mortgage-rates';
+
 /**
- * Page object for the default URL page.
+ * Page object for the "Our Mortgage Rates" page.
  */
-class OurMortgageRatesPage {
+class OurMortgageRatesPage extends PageObject {
   /* eslint-disable require-jsdoc, lines-between-class-members, max-len */
   get hasNationwideMortgage() { return $('#selectorItemHaveNationwideMortgage0'); }
   get doesNotHaveNationwideMortgage() { return $('#selectorItemHaveNationwideMortgage1'); }
@@ -36,15 +40,8 @@ class OurMortgageRatesPage {
    * Mix in the navigation section.
    */
   constructor() {
-    this.url = '/products/mortgages/our-mortgage-rates';
+    super(URL);
     this.navigation = navigationSection;
-  }
-
-  /**
-   * Open the page directly.
-   */
-  open() {
-    browser.url(this.url);
   }
 
   /**

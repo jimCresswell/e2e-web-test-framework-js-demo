@@ -57,7 +57,7 @@ describe('Example subclasses', function() {
     it('that have the subclass getters', function() {
       /* eslint-disable prefer-destructuring */
       const prop1 = this.decoratedExamples.example1.prop1;
-      /* eslint-disable prefer-destructuring */
+      /* eslint-enable prefer-destructuring */
       expect(prop1).to.equal('horse');
     });
 

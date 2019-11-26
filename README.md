@@ -1,7 +1,7 @@
 # WDIO and Cucumber Test Demo
-Travis: [![Build Status](https://travis-ci.org/jimCresswell/sr2-nw-jim.svg?branch=master)](https://travis-ci.org/jimCresswell/sr2-nw-jim)
-Coveralls: [![Coverage Status](https://coveralls.io/repos/github/jimCresswell/sr2-nw-jim/badge.svg?branch=master)](https://coveralls.io/github/jimCresswell/sr2-nw-jim?branch=master)
-Snyk: [![Known Vulnerabilities](https://snyk.io/test/github/jimCresswell/sr2-nw-jim/badge.svg?targetFile=package.json)](https://snyk.io/test/github/jimCresswell/sr2-nw-jim?targetFile=package.json)
+[![Build Status](https://travis-ci.org/jimCresswell/sr2-nw-jim.svg?branch=master)](https://travis-ci.org/jimCresswell/sr2-nw-jim)
+[![Coverage Status](https://coveralls.io/repos/github/jimCresswell/sr2-nw-jim/badge.svg?branch=master)](https://coveralls.io/github/jimCresswell/sr2-nw-jim?branch=master)
+[![Known Vulnerabilities](https://snyk.io/test/github/jimCresswell/sr2-nw-jim/badge.svg?targetFile=package.json)](https://snyk.io/test/github/jimCresswell/sr2-nw-jim?targetFile=package.json)
 
 End-to-end testing demo using [WebdriverIO](https://webdriver.io/) with [Cucumber](https://cucumber.io/).
 

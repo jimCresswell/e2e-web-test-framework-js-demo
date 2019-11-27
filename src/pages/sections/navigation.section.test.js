@@ -9,7 +9,7 @@ import { expect } from 'chai';
 
 import navigationSection from './navigation.section';
 
-import { mockWdio, unMockWdio } from '../helpers/browser/testHelpers';
+import { mockWdio, unMockWdio } from '../../helpers/browser/testHelpers';
 
 describe('The Navigation section', function() {
   // Set fakes for the WDIO `$` and `browser` objects,
@@ -22,13 +22,17 @@ describe('The Navigation section', function() {
     unMockWdio.call(this);
   });
 
+  it('has an ID.', function() {
+    expect(navigationSection.id).to.equal('navigation');
+  });
+
   describe('goToNewMortgageRates method', function() {
-    it('throws for viewport widths larger than 1023', function() {
+    it('throws for viewport widths larger than 1023.', function() {
       expect(() => navigationSection.goToNewMortgageRates(1024))
         .to.throw(TypeError);
     });
 
-    it('does not throw for viewport widths less than 1024', function() {
+    it('does not throw for viewport widths less than 1024.', function() {
       expect(() => navigationSection.goToNewMortgageRates(900))
         .to.not.throw();
     });

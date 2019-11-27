@@ -10,7 +10,7 @@ End-to-end testing demo using [WebdriverIO](https://webdriver.io/) with [Cucumbe
 
 The feature files are [here](src/features), written in a [Specification by Example](https://gojko.net/books/specification-by-example/) style. The step definitions are [here](src/steps). The example data is in the [examples directory](src/examples), wrapped in test data convenience classes.
 
-The code design values being explicit over brevity; which helps in mixed experience teams, and particularly in the area of testing where people with "automation" experience are being trained in software engineering. The code is also quite defensive for the same reason, for instance adding test data which takes browser interactions down an unsupported path should throw a hopefully instructive error, as will attempting to access a non-existent piece of test data.
+The code design values being explicit over brevity; which helps in mixed experience teams, and particularly in the area of testing where people with "automation" experience are being trained in software engineering. The code is also quite defensive for the same reason, for instance adding test data which takes browser interactions down an unsupported path should throw a hopefully instructive error, as will attempting to access a non-existent piece of test data. Page interactions use the `page object` pattern with additional reusable page sections. 
 
 ## Usage
 
@@ -27,7 +27,6 @@ The code design values being explicit over brevity; which helps in mixed experie
 
 ### Improvements
 
-  * Add mixing in sections to the base PageObject class.
   * Consider moving the step functionality wrapped by Cucumber into a separate file so it can be tested properly.
   * Implement a workaround for `@pending` tags on example groups in features (see the `@cleanSlate` tag code in wdio.conf.js for an example) and create a PR to add the functionality to CucumberJS.
   * Explicitly handle behaviour differences for narrow and wide viewports (e.g. the considerable differences in navigation section behaviour).

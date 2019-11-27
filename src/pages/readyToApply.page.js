@@ -2,7 +2,7 @@
 
 import PageObject from '../helpers/browser/pageObject';
 
-import navigationSection from './navigation.section';
+import navigationSection from './sections/navigation.section';
 
 const URL = '/products/mortgages/remortgage-to-nationwide/ready-to-apply';
 
@@ -15,11 +15,10 @@ class ReadyToApplyPage extends PageObject {
   get pageHeadingEl() { return $('#pageBody h1'); }
 
   /**
-   * Mix in the navigation section.
+   * Mix in the URL and navigation section.
    */
   constructor() {
-    super(URL);
-    this.navigation = navigationSection;
+    super(URL, [navigationSection]);
   }
 
   isRemortgagePage() {

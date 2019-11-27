@@ -1,6 +1,6 @@
 import PageObject from '../helpers/browser/pageObject';
 
-import navigationSection from './navigation.section';
+import navigationSection from './sections/navigation.section';
 
 const URL = '/products/mortgages/our-mortgage-rates';
 
@@ -37,11 +37,10 @@ class OurMortgageRatesPage extends PageObject {
   /* eslint-enable require-jsdoc, lines-between-class-members, max-len */
 
   /**
-   * Mix in the navigation section.
+   * Mix in the URL and navigation section.
    */
   constructor() {
-    super(URL);
-    this.navigation = navigationSection;
+    super(URL, [navigationSection]);
   }
 
   /**

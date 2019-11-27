@@ -1,8 +1,21 @@
 /**
- * The shared navigation section.
+ * The singleton shared navigation section.
  */
-class NavigationSection {
+
+import PageSection from '../../helpers/browser/pageSection';
+
+const ID = 'navigation';
+
+/**
+ * The navigation page section used on multiple pages.
+ * @extends PageSection
+ */
+class NavigationSection extends PageSection {
   /* eslint-disable require-jsdoc */
+  constructor() {
+    super(ID);
+  }
+
   get navMenu() { return $('#NavMenu'); }
 
   get mortgagesNav() { return $('#MortgagesNavItem'); }

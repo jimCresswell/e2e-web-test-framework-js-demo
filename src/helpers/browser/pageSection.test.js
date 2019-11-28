@@ -14,12 +14,13 @@ import { expect } from 'chai';
 import PageSection from './pageSection';
 
 describe('The PageSection base class', function() {
-  it('must be constructed with a string ID.', function() {
+  it('must throw on an invalid ID argument.', function() {
     expect(() => new PageSection()).to.throw(TypeError);
+    expect(() => new PageSection(123)).to.throw(TypeError);
     expect(() => new PageSection('')).to.throw(TypeError);
   });
 
-  it('has an ID.', function() {
+  it('must have an ID on each instance.', function() {
     const ID = 'anID';
     const section = new PageSection(ID);
     expect(section.id).to.equal(ID);

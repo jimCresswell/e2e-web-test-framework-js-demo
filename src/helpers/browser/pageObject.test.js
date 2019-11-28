@@ -59,6 +59,6 @@ describe('The PageObject base class', function() {
   });
 
   it('has an open method.', function() {
-    expect(this.pageInstance.open).to.be.an.instanceof(Function);
+    expect(() => this.pageInstance.open()).to.not.throw();
   });
 });

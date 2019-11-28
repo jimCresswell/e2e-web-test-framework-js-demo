@@ -23,17 +23,17 @@ Page interactions use the `page object` pattern with additional reusable page se
    * once with coverage stats `yarn test` or `npm test`.
    * once for a CI environment with [Coveralls](https://coveralls.io/) reporting `yarn test:ci` or `npm test:ci`.
    * continuously on file change `yarn test:watch` or `npm test:watch`.
- * Generate the JSDoc HTML files in the `docs` directory `yarn docs` or `npm run docs`. 
+ * Generate the JSDoc HTML files in the `docs` directory `yarn docs` or `npm run docs`.
 
 
 ## To do
 
 ### Improvements
 
-  * Consider moving the step functionality wrapped by Cucumber into a separate file so it can be tested properly.
   * Implement a workaround for `@pending` tags on example groups in features (see the `@cleanSlate` tag code in wdio.conf.js for an example) and create a PR to add the functionality to CucumberJS.
-  * Explicitly handle behaviour differences for narrow and wide viewports (e.g. the considerable differences in navigation section behaviour).
+  * Implement support for differing navigation section behaviour for more viewport widths.
   * When adding further test data functionality such dynamic or random data generation, consider converting `users` and `mortgages` to classes which directly inherit from `ExamplesCollection`.
+  * Convert all inline `to do` comments to JSDoc `@todo` tags.
 
 #### Alternative Domain Modelling
 

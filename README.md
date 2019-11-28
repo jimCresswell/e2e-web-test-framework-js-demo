@@ -23,6 +23,7 @@ Page interactions use the `page object` pattern with additional reusable page se
    * once with coverage stats `yarn test` or `npm test`.
    * once for a CI environment with [Coveralls](https://coveralls.io/) reporting `yarn test:ci` or `npm test:ci`.
    * continuously on file change `yarn test:watch` or `npm test:watch`.
+ * Generate the JSDoc HTML files in the `docs` directory `yarn docs` or `npm run docs`. 
 
 
 ## To do

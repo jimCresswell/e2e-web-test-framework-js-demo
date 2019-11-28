@@ -12,7 +12,8 @@
     "report:generate": "allure generate --clean ./allure-results -o ./allure-reports",
     "report:serve": "static -p 8000 ./allure-reports",
     "report:open": "open-cli http://127.0.0.1:8000",
-    "report": "npm run report:generate && (npm run report:open & npm run report:serve)"
+    "report": "npm run report:generate && (npm run report:open & npm run report:serve)",
+    "docs": "jsdoc ./src/ --recurse -d docs"
   },
   "dependencies": {
     "@babel/cli": "^7.7.0",
@@ -36,6 +37,7 @@
     "eslint": "^6.7.0",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-plugin-import": "^2.18.2",
+    "jsdoc": "^3.6.3",
     "mocha": "^6.2.2",
     "nyc": "^14.1.1",
     "sinon": "^7.5.0",

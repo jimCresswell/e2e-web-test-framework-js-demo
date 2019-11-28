@@ -2,6 +2,9 @@
 allure-results/
 allure-reports/
 
+# JSDocs
+docs/
+
 # Logs
 logs
 *.log

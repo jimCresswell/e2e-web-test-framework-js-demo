@@ -16,8 +16,8 @@ class Example {
    * test data properties causing `undefined` to be passed to
    * browser interaction code.
    *
-   * @param {[type]} exampleName [description]
-   * @param {[type]} example     [description]
+   * @param {string} exampleName The example identifier
+   * @param {Object} example     The example data in an object literal
    */
   constructor(exampleName, example) {
     this.data = example;
@@ -42,7 +42,7 @@ class Example {
    * The methods for decoration come from subclasses of Example,
    * see e.g. the User class src\examples\users.js .
    * @param  {Object} simpleExamples Object literal examples.
-   * @return {Object}                Instantiated Example objects.
+   * @return {Example}                Instantiated Example objects.
    * @static
    */
   static decorate(simpleExamples) {

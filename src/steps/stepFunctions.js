@@ -2,6 +2,8 @@
  * The functions bound to the step definitions.
  *
  * Defined separately from the step files to enable testing and reuse.
+ *
+ * @module
  */
 
 import { assert } from 'chai';

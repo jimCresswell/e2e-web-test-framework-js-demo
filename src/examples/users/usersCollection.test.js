@@ -10,7 +10,7 @@ no-unused-expressions: off
 
 import { expect } from 'chai';
 
-import users from './users';
+import users from './usersCollection';
 
 describe('Users instance', function() {
   before(function() {

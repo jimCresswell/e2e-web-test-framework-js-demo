@@ -9,7 +9,7 @@ import { expect } from 'chai';
 
 import navigationSection from './navigation.section';
 
-import { mockWdio, unMockWdio } from '../../helpers/browser/testHelpers';
+import { mockWdio, unMockWdio } from '../../helpers/test/testHelpers';
 
 describe('The Navigation section', function() {
   // Set fakes for the WDIO `$` and `browser` objects,

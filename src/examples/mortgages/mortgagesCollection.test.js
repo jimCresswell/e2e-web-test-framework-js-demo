@@ -10,7 +10,7 @@ no-unused-expressions: off
 
 import { expect } from 'chai';
 
-import mortgages from './mortgages';
+import mortgages from './mortgagesCollection';
 import Offer from './offer';
 
 describe('Mortgages instance', function() {

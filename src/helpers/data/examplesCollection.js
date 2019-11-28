@@ -1,9 +1,13 @@
 /**
  * A collection of examples to be used as test data.
+ *
+ * @class
+ * @abstract
  */
 class ExamplesCollection {
   /**
    * Define the test data at instantiation.
+   *
    * @param {String} collectionName The broad type of data, e.g. user, icecream.
    * @param {Object} examples Examples of specific instances of the type.
    */

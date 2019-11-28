@@ -1,5 +1,7 @@
 /**
  * Mortgage offer types.
+ *
+ * @class
 */
 class Offer {
   /**

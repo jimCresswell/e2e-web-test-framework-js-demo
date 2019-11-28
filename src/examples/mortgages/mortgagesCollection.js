@@ -1,9 +1,11 @@
 /**
  * Singleton mortgage test data examples.
+ *
+ * @module
  */
 
-import ExamplesCollection from '../helpers/data/examplesCollection';
-import Example from '../helpers/data/example';
+import ExamplesCollection from '../../helpers/data/examplesCollection';
+import Example from '../../helpers/data/example';
 import Offer from './offer';
 
 const COLLECTION_NAME = 'mortgages';
@@ -40,6 +42,9 @@ const EXAMPLES = {
 
 /**
  * Individual mortgage class containing methods to add to above examples.
+ *
+ * @class
+ * @inner
  */
 class Mortgage extends Example {
   /* eslint-disable require-jsdoc */

@@ -3,7 +3,8 @@ import { noUndefined } from './objectBehaviour';
 /**
  * A single example to be used as test data.
  *
- * This class is intended to be subclassed.
+ * @class
+ * @abstract
  */
 class Example {
   /**

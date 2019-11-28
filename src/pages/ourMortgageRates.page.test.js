@@ -16,11 +16,9 @@ no-unused-expressions: off
 
 import { expect } from 'chai';
 
-import { mockWdio, unMockWdio } from '../helpers/browser/testHelpers';
+import { mockWdio, unMockWdio } from '../helpers/test/testHelpers';
 
 import ourMortgageRatesPage from './ourMortgageRates.page';
-import users from '../examples/users';
-import mortgages from '../examples/mortgages';
 
 describe('Our Mortgage Rates page object', function() {
   // Set fakes for the WDIO `$` and `browser` objects,
@@ -28,8 +26,17 @@ describe('Our Mortgage Rates page object', function() {
   before(function() {
     mockWdio.call(this);
 
-    this.user = users.getExample('remortgaging');
-    this.mortgage = mortgages.getExample('fixed with fee');
+    this.user = {
+      isChangingLender: true,
+      propertyValue: 1,
+      mortgageAmount: 2,
+      termLengthYears: 3,
+    };
+    this.mortgage = {
+      isFixed: true,
+      rateType: 'fixed',
+      hasFee: true,
+    };
   });
 
   after(function() {

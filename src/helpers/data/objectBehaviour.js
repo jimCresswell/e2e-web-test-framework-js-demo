@@ -1,5 +1,7 @@
 /**
  * A collection of proxies for modifying default Object behaviour.
+ *
+ * @module objectBehaviour
  */
 
 const objectBehaviour = {

@@ -1,9 +1,11 @@
 /**
  * Singleton user test data examples.
+ *
+ * @module
  */
 
-import ExamplesCollection from '../helpers/data/examplesCollection';
-import Example from '../helpers/data/example';
+import ExamplesCollection from '../../helpers/data/examplesCollection';
+import Example from '../../helpers/data/example';
 
 const COLLECTION_NAME = 'users';
 
@@ -30,6 +32,9 @@ const EXAMPLES = {
 
 /**
  * Individual user class containing methods to add to above examples.
+ *
+ * @class
+ * @inner
  */
 class User extends Example {
   /* eslint-disable require-jsdoc */
@@ -59,7 +64,7 @@ class User extends Example {
   /* eslint-enable require-jsdoc */
 }
 
-const users = new ExamplesCollection(
+const usersCollection = new ExamplesCollection(
   COLLECTION_NAME, User.decorate(EXAMPLES)
 );
-export default users;
+export default usersCollection;

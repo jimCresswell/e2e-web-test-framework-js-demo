@@ -5,8 +5,8 @@ import mainPage from '../pages/main.page';
 import ourMortgageRatesPage from '../pages/ourMortgageRates.page';
 import readyToApplyPage from '../pages/readyToApply.page';
 
-import users from '../examples/users';
-import mortgages from '../examples/mortgages';
+import users from '../examples/users/usersCollection';
+import mortgages from '../examples/mortgages/mortgagesCollection';
 
 // It doesn't matter that this is `given` rather than `when`,
 // the different step types only exist for human readability.

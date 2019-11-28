@@ -13,6 +13,9 @@ import sinon from 'sinon';
  * @this MochaTestContext
  */
 function mockWdio() {
+  const defaultFakeWidth = 800;
+  let fakeWidth = defaultFakeWidth;
+
   this.old$ = global.$;
   global.$ = function fake$(selector) {
     const returnedEl = {
@@ -24,6 +27,7 @@ function mockWdio() {
       waitForClickable: sinon.fake(),
       waitForExist: sinon.fake(),
       scrollIntoView: sinon.fake(),
+      getText: sinon.fake(),
     };
 
     // Make the fake elements chainable.
@@ -40,6 +44,11 @@ function mockWdio() {
   this.oldBrowser = global.browser;
   global.browser = {
     pause: sinon.fake(),
+    url: sinon.fake(),
+    setWindowSize: sinon.fake(),
+    getWindowSize: sinon.fake(() => ({ width: fakeWidth })),
+    setFakeWidth: (width) => { fakeWidth = width; },
+    resetFakeWidth: () => { fakeWidth = defaultFakeWidth; },
   };
 }
 

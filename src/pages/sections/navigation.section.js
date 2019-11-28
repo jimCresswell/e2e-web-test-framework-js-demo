@@ -31,11 +31,10 @@ class NavigationSection extends PageSection {
    * Navigate to the new mortgages rates page.
    *
    * Note that navigation element behaviour changes with viewport width.
-   *
-   * @param {Number} viewportWidth The viewport width in pixels.
    */
-  goToNewMortgageRates(viewportWidth) {
-    if (viewportWidth < 1024) {
+  goToNewMortgageRates() {
+    const { width } = browser.getWindowSize();
+    if (width < 1024) {
       this.navMenu.waitForDisplayed();
       this.navMenu.click();
 
@@ -45,7 +44,9 @@ class NavigationSection extends PageSection {
       this.newMortgageRatesNav.waitForDisplayed();
       this.newMortgageRatesNav.click();
     } else {
-      throw new TypeError('Broad viewport navigation not implemented yet.');
+      throw new TypeError(
+        `Menu navigation is not yet implemented for viewport width: ${width}.`
+      );
     }
   }
 }

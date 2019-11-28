@@ -12,8 +12,7 @@ import navigationSection from './navigation.section';
 import { mockWdio, unMockWdio } from '../../helpers/test/testHelpers';
 
 describe('The Navigation section', function() {
-  // Set fakes for the WDIO `$` and `browser` objects,
-  // and create the test data.
+  // Set fakes for the WDIO `$` and `browser` objects.
   before(function() {
     mockWdio.call(this);
   });
@@ -28,12 +27,14 @@ describe('The Navigation section', function() {
 
   describe('goToNewMortgageRates method', function() {
     it('throws for viewport widths larger than 1023.', function() {
-      expect(() => navigationSection.goToNewMortgageRates(1024))
+      global.browser.setFakeWidth(1024);
+      expect(() => navigationSection.goToNewMortgageRates())
         .to.throw(TypeError);
     });
 
     it('does not throw for viewport widths less than 1024.', function() {
-      expect(() => navigationSection.goToNewMortgageRates(900))
+      global.browser.setFakeWidth(900);
+      expect(() => navigationSection.goToNewMortgageRates())
         .to.not.throw();
     });
   });

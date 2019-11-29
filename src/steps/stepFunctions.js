@@ -1,8 +1,15 @@
 /**
- * The functions bound to the step definitions.
- * Defined separately from the step files to enable testing and reuse.
+ * The functions bound to the Cucumber step definitions.
+ * <br /><br />
+ * Uses example data collections {@link module:usersCollection}
+ * and {@link module:mortgagesCollection}.
+ * <br /><br />
+ * Uses Page Objects {@link MainPage}, {@link OurMortgageRatesPage}
+ * and {@link ReadyToApplyPage}.
  *
  * @module stepFunctions
+ * @requires usersCollection
+ * @requires mortgagesCollection
  */
 
 import { assert } from 'chai';

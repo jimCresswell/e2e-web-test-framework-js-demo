@@ -1,7 +1,11 @@
 /**
  * Bind the step functions to the Cucumber steps.
  *
- * The steps functions are definited separately to improve testing and reuse.
+ * The steps functions are defined separately in the
+ * stepFunctions module to improve testing and reuse.
+ * @module 'find-mortgage-rate.steps'
+ * @requires cucumber
+ * @requires stepFunctions
  */
 
 import { Given, When, Then } from 'cucumber';

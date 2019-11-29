@@ -30,7 +30,6 @@ Page interactions use the `page object` pattern with additional reusable page se
 
 ### Improvements
 
-  * Instantiate rather than decorate test data examples, enabling separation of classes and better documentation.
   * Implement a workaround for `@pending` tags on example groups in features (see the `@cleanSlate` tag code in wdio.conf.js for an example) and create a PR to add the functionality to CucumberJS.
   * Implement support for differing navigation section behaviour for more viewport widths.
   * Add further test data functionality such dynamic or random data generation.

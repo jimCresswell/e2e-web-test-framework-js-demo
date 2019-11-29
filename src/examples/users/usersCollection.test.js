@@ -1,5 +1,5 @@
 /**
- * Tests for the Users class.
+ * Tests for the usersCollection module.
  */
 /* eslint
 prefer-arrow-callback: off,
@@ -10,34 +10,12 @@ no-unused-expressions: off
 
 import { expect } from 'chai';
 
-import users from './usersCollection';
+import usersCollection from './usersCollection';
+import User from './user';
 
-describe('Users instance', function() {
-  before(function() {
-    this.user = users.getExample('_test');
-  });
-
-  it('has a hasNationwideMortgage value', function() {
-    expect(this.user.hasNationwideMortgage).to.be.false;
-  });
-
-  it('has an applicationType value', function() {
-    expect(this.user.applicationType).to.equal('buying my first home');
-  });
-
-  it('has a isChangingLender value', function() {
-    expect(this.user.isChangingLender).to.false;
-  });
-
-  it('has a propertyValue value', function() {
-    expect(this.user.propertyValue).to.equal(1);
-  });
-
-  it('has a mortgageAmount value', function() {
-    expect(this.user.mortgageAmount).to.equal(2);
-  });
-
-  it('has a termLengthYears value', function() {
-    expect(this.user.termLengthYears).to.equal(3);
+describe('The usersCollection', function() {
+  it('can retrieve a user by exampleName', function() {
+    const user = usersCollection.getExample('_test');
+    expect(user).to.be.instanceof(User);
   });
 });

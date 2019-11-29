@@ -12,69 +12,47 @@ import { expect } from 'chai';
 
 import Example from './example';
 
-describe('Example subclasses', function() {
-  before(function() {
-    this.simpleExamples = {
-      example1: {
-        prop1: 'horse',
-        prop2: 'fish',
-      },
-      example2: {
-        prop1: 'jam',
-        prop2: 'France',
-        deliberatelyUndefined: undefined,
-      },
-    };
-
-    /* eslint-disable require-jsdoc */
-    class ExampleSubClass extends Example {
-      get prop1() { return this.data.prop1; }
-    }
-    /* eslint-enable require-jsdoc */
-
-    this.decoratedExamples = ExampleSubClass.decorate(this.simpleExamples);
+describe('Example class', function() {
+  it('throws if an invalid example name is provided', function() {
+    expect(() => new Example({})).to.throw(TypeError);
   });
 
-  describe('can create decorated examples', function() {
-    it('that preserve example names', function() {
-      expect(this.decoratedExamples).to.have.all.keys('example1', 'example2');
-    });
+  it('replaces spaces in provided names with underscores', function() {
+    const example = new Example({ exampleName: 'a name with spaces' });
+    expect(example.exampleName).to.equal('a_name_with_spaces');
+  });
 
-    it('that copies the simple examples to a data property', function() {
-      /* eslint-disable prefer-destructuring */
-      const example = this.decoratedExamples.example1;
-      /* eslint-enable prefer-destructuring */
-      expect(example.data).to.include(this.simpleExamples.example1);
-    });
-
-    it('that add example names within each example', function() {
-      /* eslint-disable prefer-destructuring */
-      const exampleName = this.decoratedExamples.example1.exampleName;
-      /* eslint-enable prefer-destructuring */
-      expect(exampleName).to.equal('example1');
-    });
-
-    it('that have the subclass getters', function() {
-      /* eslint-disable prefer-destructuring */
-      const prop1 = this.decoratedExamples.example1.prop1;
-      /* eslint-enable prefer-destructuring */
-      expect(prop1).to.equal('horse');
-    });
-
-    it(
-      'that throw on attempting to access non-existent properties',
-      function() {
-        expect(() => this.decoratedExamples.example1.notAProp)
-          .to.throw(TypeError);
+  describe('extends a subclass that', function() {
+    before(function() {
+      /* eslint-disable require-jsdoc */
+      class ExampleSubclass extends Example {
+        get prop1() { return this.data.prop1; }
       }
-    );
+      /* eslint-enable require-jsdoc */
 
-    it(
-      'that throw on attempting to access properties with a value of undefined',
-      function() {
-        expect(() => this.decoratedExamples.example2.deliberatelyUndefined)
-          .to.throw(TypeError);
-      }
-    );
+      this.example = new ExampleSubclass({
+        exampleName: 'animals',
+        prop1: 'horse',
+        prop2: 'fish',
+        deliberatelyUndefined: undefined,
+      });
+    });
+
+    it('preserves example names', function() {
+      expect(this.example.exampleName).to.equal('animals');
+    });
+
+    it('makes example data available through getters', function() {
+      expect(this.example.prop1).to.equal('horse');
+    });
+
+    it('throws on attempting to access non-existent properties', function() {
+      expect(() => this.example.notAProp).to.throw(TypeError);
+    });
+
+    it('throws on attempting to access undefined properties', function() {
+      expect(() => this.example.deliberatelyUndefined)
+        .to.throw(TypeError);
+    });
   });
 });

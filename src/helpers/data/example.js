@@ -16,15 +16,30 @@ class Example {
    * test data properties causing `undefined` to be passed to
    * browser interaction code.
    *
-   * @param {string} exampleName The example identifier
    * @param {Object} example     The example data in an object literal
+   * @param {string} example.exampleName The example identifier
    */
-  constructor(exampleName, example) {
-    this.data = example;
-    this.data.exampleName = exampleName;
+  constructor(example) {
+    const name = example.exampleName;
+    if (typeof name !== 'string' || name.length < 1) {
+      throw new TypeError(
+        `Example name must be a non-empty string, received "${name}"`
+      );
+    }
 
-    // Wrap the decorated example in a proxy object that throws
-    // a type error if the example property is undefined.
+    /**
+     * Store the example data.
+     * @type {Object}
+     * @private
+     * @todo Enforce privacy on the data object so it isn't misused.
+     */
+    this.data = example;
+
+    // Replace any spaces in the example name with underscores.
+    this.data.exampleName = name.replace(/\s/g, '_');
+
+    // Wrap the example in a proxy object that throws a TypeError
+    // if a non-existent or undefined example property is accessed.
     return noUndefined(this);
   }
 
@@ -34,25 +49,6 @@ class Example {
    */
   get exampleName() {
     return this.data.exampleName;
-  }
-
-  /**
-   * Decorate a *collection* of examples by turning them into `Example` objects.
-   *
-   * The methods for decoration come from subclasses of Example,
-   * see e.g. the User class src\examples\users.js .
-   * @param  {Object} simpleExamples Object literal examples.
-   * @return {Example}                Instantiated Example objects.
-   * @static
-   */
-  static decorate(simpleExamples) {
-    const instantiatedExamples = {};
-    Object.entries(simpleExamples).forEach((simpleExample) => {
-      const [name, properties] = simpleExample;
-      const exampleInstance = new this(name, properties);
-      instantiatedExamples[name] = exampleInstance;
-    });
-    return instantiatedExamples;
   }
 }
 

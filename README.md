@@ -8,7 +8,7 @@
 
 End-to-end testing demo using [WebdriverIO](https://webdriver.io/) with [Cucumber](https://cucumber.io/).
 
-The feature files are [here](src/features), written in a [Specification by Example](https://gojko.net/books/specification-by-example/) style. The step definitions are [here](src/steps). The data for each example used in the scenarios is in the [examples directory](src/examples), wrapped in test data classes.
+The feature files are [here](src/features), written in a [Specification by Example](https://gojko.net/books/specification-by-example/) style. The step definitions are [here](src/steps). The data for each example used in the scenarios are in the [examples directory](src/examples), in `*Collection` modules and wrapped in test data classes.
 
 The code design favours being explicit over brevity. This helps in mixed experience teams, particularly where people with some test automation experience are being trained in software engineering. The code is also quite defensive for the same reason, for instance adding test data which takes browser interactions down an unsupported path will throw an instructive error.
 

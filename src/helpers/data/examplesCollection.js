@@ -12,11 +12,24 @@ class ExamplesCollection {
    * Define the test data at instantiation.
    *
    * @param {string} collectionName The collection ID.
-   * @param {Object|Example} examples The examples data.
+   * @param {Object[]|Example[]} examplesArray The examples data.
    */
-  constructor(collectionName, examples) {
+  constructor(collectionName, examplesArray) {
     this.collectionName = collectionName;
-    this.examples = examples;
+
+    if (!Array.isArray(examplesArray) || examplesArray.length < 1) {
+      throw new TypeError(
+        `examplesArray must be a non-empty Array, receiced "${examplesArray}"`
+      );
+    }
+
+    // Array to "map" to make lookups by name simpler.
+    const examplesMap = {};
+    examplesArray.forEach((example) => {
+      examplesMap[example.exampleName] = example;
+    });
+
+    this.examples = examplesMap;
   }
 
   /**

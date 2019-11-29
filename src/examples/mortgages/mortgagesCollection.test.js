@@ -1,5 +1,5 @@
 /**
- * Tests for the Mortgages class.
+ * Tests for the mortgagesCollection module.
  */
 /* eslint
 prefer-arrow-callback: off,
@@ -10,34 +10,12 @@ no-unused-expressions: off
 
 import { expect } from 'chai';
 
-import mortgages from './mortgagesCollection';
-import Offer from './offer';
+import mortgagesCollection from './mortgagesCollection';
+import Mortgage from './mortgage';
 
-describe('Mortgages instance', function() {
-  before(function() {
-    this.mortgage = mortgages.getExample('_test');
-  });
-
-  it('has a rateType value', function() {
-    expect(this.mortgage.rateType).to.equal('Tracker');
-  });
-
-  it('has a isFixed value', function() {
-    expect(this.mortgage.isFixed).to.be.false;
-  });
-
-  it('has a hasFee value', function() {
-    expect(this.mortgage.hasFee).to.be.false;
-  });
-
-  it('has an offerPreference value of type Offer', function() {
-    expect(this.mortgage.offerPreference).to.be.instanceof(Offer);
-  });
-
-  it('has an expectedOffers array of Offers', function() {
-    const offers = this.mortgage.expectedOffers;
-    const firstOffer = offers[0];
-    expect(offers).to.be.instanceof(Array);
-    expect(firstOffer).to.be.instanceof(Offer);
+describe('The mortgagesCollection', function() {
+  it('can retrieve a mortgage by exampleName', function() {
+    const mortgage = mortgagesCollection.getExample('_test');
+    expect(mortgage).to.be.instanceof(Mortgage);
   });
 });

@@ -2,9 +2,6 @@ import { noUndefined } from './objectBehaviour';
 
 /**
  * A single example to be used as test data.
- *
- * @class
- * @abstract
  */
 class Example {
   /**

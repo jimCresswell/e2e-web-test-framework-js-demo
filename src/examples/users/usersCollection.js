@@ -13,7 +13,6 @@ import ExamplesCollection from '../../helpers/data/examplesCollection';
 /**
  * User data examples to be wrapped in an ExamplesCollection instance.
  * @constant {Example[]}
- * @default
  */
 const USER_EXAMPLES = [
   new User({

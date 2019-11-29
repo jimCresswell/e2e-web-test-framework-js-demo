@@ -30,10 +30,10 @@ Page interactions use the `page object` pattern with additional reusable page se
 
 ### Improvements
 
+  * Consider enforcing key correctness on objects passed to `User` and `Mortgage` constructors.
   * Implement a workaround for `@pending` tags on example groups in features (see the `@cleanSlate` tag code in wdio.conf.js for an example) and create a PR to add the functionality to CucumberJS.
+  * Add further test data functionality such as random data generation.
   * Implement support for differing navigation section behaviour for more viewport widths.
-  * Add further test data functionality such dynamic or random data generation.
-  * Convert all inline `to do` comments to JSDoc `@todo` tags.
 
 #### Alternative Domain Modelling
 

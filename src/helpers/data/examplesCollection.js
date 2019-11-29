@@ -3,9 +3,6 @@
  *
  * The examples can be a simple object literal
  * or wrapped in a class extending Example.
- *
- * @class
- * @abstract
  */
 class ExamplesCollection {
   /**

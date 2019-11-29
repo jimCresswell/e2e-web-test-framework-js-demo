@@ -78,8 +78,8 @@ class OurMortgageRatesPage extends PageObject {
       this.doesNotHaveNationwideMortgage.click();
     }
 
-    // To do: replace with switch statement when other selectors implemneted.
     // Application type.
+    /** @todo replace with switch statement when other selectors implemneted. */
     if (user.isChangingLender) {
       this.changingLender.waitForDisplayed();
       this.changingLender.click();
@@ -91,7 +91,6 @@ class OurMortgageRatesPage extends PageObject {
     }
 
     // Numeric values.
-    // To do: may have to implement waiting for overlay for stability.
     this.propertyValue.setValue(user.propertyValue);
     this.mortgageAmount.setValue(user.mortgageAmount);
     this.mortgageTerm.setValue(user.termLengthYears);
@@ -103,16 +102,15 @@ class OurMortgageRatesPage extends PageObject {
 
   /**
    * Enter the user's mortgage preferences.
-   *
-   * To do: remodel as per /README.md#alternative-domain-modelling
    * @param  {TestData} mortgage Mortgage data including user preferences.
    */
   enterMortgagePreferences(mortgage) {
     this.resultsHeader.waitForDisplayed();
 
     if (mortgage.isFixed) {
-      // To do: figure out how sometimes this results
-      // in "tracker" being clicked.
+      /**
+       * @todo figure out how sometimes this results in "tracker" being clicked.
+       */
       this.fixedRateCheck.waitForDisplayed();
       browser.pause(1000); // This seems to avoid the misfired event.
       this.fixedRateCheck.waitForClickable();

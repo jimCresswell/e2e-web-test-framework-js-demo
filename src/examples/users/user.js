@@ -3,6 +3,8 @@ import Example from '../../helpers/data/example';
 /**
  * User class to wrap the simple user examples.
  * @extends Example
+ * @todo add a constructor with some form of interface enforcement for
+ * which properties can be passed, throw on unknown properties.
  */
 class User extends Example {
   /*

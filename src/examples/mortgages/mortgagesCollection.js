@@ -15,7 +15,6 @@ import ExamplesCollection from '../../helpers/data/examplesCollection';
 /**
 * Mortgage data examples to be wrapped in an ExamplesCollection instance.
 * @constant {Example[]}
-* @default
 */
 const MORTGAGE_EXAMPLES = [
   new Mortgage({

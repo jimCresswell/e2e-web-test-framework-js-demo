@@ -1,20 +1,37 @@
 /**
- * Singleton mortgage test data examples.
+ * Exports a single instance of MortgagesCollection.
  *
- * @module
+ * This module defines classes for both individual and collections of mortgages,
+ * extending the base Example and ExamplesCollection classes.
+ *
+ * @module mortgagesCollection
  */
+/* eslint max-classes-per-file: off */
 
 import ExamplesCollection from '../../helpers/data/examplesCollection';
 import Example from '../../helpers/data/example';
 import Offer from './offer';
 
-const COLLECTION_NAME = 'mortgages';
 
-// Constants.
+/**
+ * @constant {String}
+ * @default
+ */
 const FIXED = 'Fixed';
+/**
+ * @constant {String}
+ * @default
+ */
 const TRACKER = 'Tracker';
 
-const EXAMPLES = {
+
+/**
+* Mortgage data examples to be decorated with the Mortgage class methods and
+* wrapped in an ExamplesCollection instance.
+* @constant {Object}
+* @default
+*/
+const MORTGAGES = {
   _test: {
     preferences: {
       rateType: TRACKER,
@@ -41,9 +58,8 @@ const EXAMPLES = {
 };
 
 /**
- * Individual mortgage class containing methods to add to above examples.
- *
- * @class
+ * Mortgage class to decorate the simple user examples.
+ * @extends Example
  * @inner
  */
 class Mortgage extends Example {
@@ -70,7 +86,23 @@ class Mortgage extends Example {
   /* eslint-enable require-jsdoc */
 }
 
-const mortgages = new ExamplesCollection(
-  COLLECTION_NAME, Mortgage.decorate(EXAMPLES)
-);
-export default mortgages;
+/**
+ * The MortgagesCollection class, extending ExamplesCollection.
+ * @extends ExamplesCollection
+ * @inner
+ */
+class MortgagesCollection extends ExamplesCollection {
+  /**
+   * Create an ExamplesCollection of 'mortgages'.
+   */
+  constructor() {
+    super('mortgages', Mortgage.decorate(MORTGAGES));
+  }
+}
+
+/**
+ * The exported MortgagesCollection instance.
+ * @constant {MortgagesCollection}
+ */
+const mortgagesCollection = new MortgagesCollection();
+export default mortgagesCollection;

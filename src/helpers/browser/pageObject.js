@@ -5,7 +5,7 @@ class PageObject {
   /**
    * Constructor.
    * @param {String} url The URL for this page relative to the default base URL.
-   * @param {Array} sections An optional array of page sections to mix in.
+   * @param {Array=} sections An optional array of page sections to mix in.
    */
   constructor(url, sections) {
     if (url === undefined) {

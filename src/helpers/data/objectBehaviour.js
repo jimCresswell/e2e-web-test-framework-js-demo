@@ -6,9 +6,12 @@
 
 const objectBehaviour = {
   /**
-   * Throw an error if a non-existent property or undefined value is accessed.
+   * Proxy an object to throw an error if a non-existent property
+   * or undefined value is accessed.
+   * @function noUndefined
    * @param  {Object} object The object to modify.
-   * @return {Object}        The same object wrapped in a modifying proxy.
+   * @throws {TypeError}
+   * @return {Object}        The passed object wrapped in a modifying proxy.
    */
   noUndefined(object) {
     return new Proxy(object, {

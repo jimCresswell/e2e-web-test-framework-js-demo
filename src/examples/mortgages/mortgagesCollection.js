@@ -4,6 +4,11 @@
  * This module defines classes for both individual and collections of mortgages,
  * extending the base Example and ExamplesCollection classes.
  *
+ * @todo Consider replacing the decoration with instantiation in order to
+ * enforce data types compliance and allow better documentation. Then
+ * module can directly export an instance of ExamplesCollection without
+ * subclassing it.
+ *
  * @module mortgagesCollection
  */
 /* eslint max-classes-per-file: off */
@@ -63,27 +68,45 @@ const MORTGAGES = {
  * @inner
  */
 class Mortgage extends Example {
-  /* eslint-disable require-jsdoc */
+  /**
+   * The desired mortgage rate type.
+   * @type {string}
+   */
   get rateType() {
     return this.data.preferences.rateType;
   }
 
+  /**
+   * Is the desired mortgage rate type 'fixed'?
+   * @type {boolean}
+   */
   get isFixed() {
     return this.data.preferences.rateType === FIXED;
   }
 
+  /**
+   * Does the desired mortgage type have a fee?
+   * @type {boolean}
+   */
   get hasFee() {
     return this.data.preferences.hasFee;
   }
 
+  /**
+   * The user's preferred mortgage offer.
+   * @type {Offer}
+   */
   get offerPreference() {
     return this.data.preferences.offerPreference;
   }
 
+  /**
+   * The mortgage offers expected to be returned by the system.
+   * @type {Offer[]}
+   */
   get expectedOffers() {
     return this.data.expectedOffers;
   }
-  /* eslint-enable require-jsdoc */
 }
 
 /**

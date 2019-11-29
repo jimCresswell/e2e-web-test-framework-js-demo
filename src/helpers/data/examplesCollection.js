@@ -1,6 +1,9 @@
 /**
  * A collection of examples to be used as test data.
  *
+ * The examples can be a simple object literal
+ * or wrapped in a class extending Example.
+ *
  * @class
  * @abstract
  */
@@ -8,8 +11,8 @@ class ExamplesCollection {
   /**
    * Define the test data at instantiation.
    *
-   * @param {String} collectionName The broad type of data, e.g. user, icecream.
-   * @param {Object} examples Examples of specific instances of the type.
+   * @param {string} collectionName The collection ID.
+   * @param {Object|Example} examples The examples data.
    */
   constructor(collectionName, examples) {
     this.collectionName = collectionName;
@@ -18,7 +21,7 @@ class ExamplesCollection {
 
   /**
    * List the available types.
-   * @return {Array}  List of available types.
+   * @return {string[]}  List of available types.
    */
   getExampleNames() {
     return Object.keys(this.examples);
@@ -28,8 +31,9 @@ class ExamplesCollection {
    * Get an individual example.
    * Spaces in the exampleName argument will be replaced with underscores.
    *
-   * @param  {String} exampleName A key identifying the example.
-   * @return {Example}          The test data.
+   * @param  {string} exampleName A key identifying the example.
+   * @throws {TypeError}
+   * @return {Object|Example}          The test data.
    */
   getExample(exampleName) {
     const exampleNameNoSpaces = exampleName.replace(/\s/g, '_');

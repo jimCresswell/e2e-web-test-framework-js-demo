@@ -4,6 +4,11 @@
  * This module defines classes for both individual and collections of users,
  * extending the base Example and ExamplesCollection classes.
  *
+ * @todo Consider replacing the decoration with instantiation in order to
+ * enforce data types compliance and allow better documentation. Then
+ * module can directly export an instance of ExamplesCollection without
+ * subclassing it.
+ *
  * @module usersCollection
  */
 /* eslint max-classes-per-file: off */
@@ -53,31 +58,53 @@ const USER_EXAMPLES = {
  * @inner
  */
 class User extends Example {
-  /* eslint-disable require-jsdoc */
+  /**
+   * Does the user have a Nationwide mortgage?
+   * @type {boolean}
+   */
   get hasNationwideMortgage() {
     return this.data.hasNationwideMortgage;
   }
 
+  /**
+   * The user's application type.
+   * @type {string}
+   */
   get applicationType() {
     return this.data.applicationType;
   }
 
+  /**
+   * Is the user changing lender?
+   * @type {boolean}
+   */
   get isChangingLender() {
     return this.data.applicationType === CHANGING_LENDER;
   }
 
+  /**
+   * The value of the target property in GBP.
+   * @type {int}
+   */
   get propertyValue() {
     return this.data.propertyValue;
   }
 
+  /**
+   * The requested value of mortgage in GBP.
+   * @type {int}
+   */
   get mortgageAmount() {
     return this.data.mortgageAmount;
   }
 
+  /**
+   * The requested term length in years.
+   * @type {int}
+   */
   get termLengthYears() {
     return this.data.termLengthYears;
   }
-  /* eslint-enable require-jsdoc */
 }
 
 /**

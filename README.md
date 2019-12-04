@@ -1,7 +1,7 @@
 # WDIO and Cucumber Test Demo
 [![Build Status](https://travis-ci.org/jimCresswell/e2e-web-test-framework-demo.svg?branch=master)](https://travis-ci.org/jimCresswell/e2e-web-test-framework-demo)
 [![Coverage Status](https://coveralls.io/repos/github/jimCresswell/e2e-web-test-framework-demo/badge.svg?branch=master)](https://coveralls.io/github/jimCresswell/e2e-web-test-framework-demo?branch=master)
-[![Maintainability](https://api.codeclimate.com/v1/badges/72c356a84ab64c90c952/maintainability)](https://codeclimate.com/github/jimCresswell/sr2-nw-jim/maintainability)
+[![Maintainability](https://api.codeclimate.com/v1/badges/8a0948209bbb1cbe1222/maintainability)](https://codeclimate.com/github/jimCresswell/e2e-web-test-framework-demo/maintainability)
 [![dependencies Status](https://david-dm.org/jimCresswell/e2e-web-test-framework-demo/status.svg)](https://david-dm.org/jimCresswell/e2e-web-test-framework-demo)
 [![devDependencies Status](https://david-dm.org/jimCresswell/e2e-web-test-framework-demo/dev-status.svg)](https://david-dm.org/jimCresswell/e2e-web-test-framework-demo?type=dev)
 [![Vulnerabilities Analysis](https://snyk.io/test/github/jimCresswell/e2e-web-test-framework-demo/badge.svg?targetFile=package.json)](https://snyk.io/test/github/jimCresswell/e2e-web-test-framework-demo?targetFile=package.json)

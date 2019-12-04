@@ -1,10 +1,10 @@
 # WDIO and Cucumber Test Demo
-[![Build Status](https://travis-ci.org/jimCresswell/sr2-nw-jim.svg?branch=master)](https://travis-ci.org/jimCresswell/sr2-nw-jim)
-[![Coverage Status](https://coveralls.io/repos/github/jimCresswell/sr2-nw-jim/badge.svg?branch=master)](https://coveralls.io/github/jimCresswell/sr2-nw-jim?branch=master)
+[![Build Status](https://travis-ci.org/jimCresswell/e2e-web-test-framework-demo.svg?branch=master)](https://travis-ci.org/jimCresswell/e2e-web-test-framework-demo)
+[![Coverage Status](https://coveralls.io/repos/github/jimCresswell/e2e-web-test-framework-demo/badge.svg?branch=master)](https://coveralls.io/github/jimCresswell/e2e-web-test-framework-demo?branch=master)
 [![Maintainability](https://api.codeclimate.com/v1/badges/72c356a84ab64c90c952/maintainability)](https://codeclimate.com/github/jimCresswell/sr2-nw-jim/maintainability)
-[![Dependencies](https://david-dm.org/jimCresswell/sr2-nw-jim/status.svg)](https://david-dm.org/jimCresswell/sr2-nw-jim)
-[![Dev Dependencies](https://david-dm.org/jimCresswell/sr2-nw-jim/dev-status.svg)](https://david-dm.org/jimCresswell/sr2-nw-jim?type=dev)
-[![Vulnerabilities Analysis](https://snyk.io/test/github/jimCresswell/sr2-nw-jim/badge.svg?targetFile=package.json)](https://snyk.io/test/github/jimCresswell/sr2-nw-jim?targetFile=package.json)
+[![dependencies Status](https://david-dm.org/jimCresswell/e2e-web-test-framework-demo/status.svg)](https://david-dm.org/jimCresswell/e2e-web-test-framework-demo)
+[![devDependencies Status](https://david-dm.org/jimCresswell/e2e-web-test-framework-demo/dev-status.svg)](https://david-dm.org/jimCresswell/e2e-web-test-framework-demo?type=dev)
+[![Vulnerabilities Analysis](https://snyk.io/test/github/jimCresswell/e2e-web-test-framework-demo/badge.svg?targetFile=package.json)](https://snyk.io/test/github/jimCresswell/e2e-web-test-framework-demo?targetFile=package.json)
 
 End-to-end testing demo using [WebdriverIO](https://webdriver.io/) with [Cucumber](https://cucumber.io/).
 

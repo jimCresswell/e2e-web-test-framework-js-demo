@@ -6,7 +6,7 @@
 [![devDependencies Status](https://david-dm.org/jimCresswell/e2e-web-test-framework-demo/dev-status.svg)](https://david-dm.org/jimCresswell/e2e-web-test-framework-demo?type=dev)
 [![Vulnerabilities Analysis](https://snyk.io/test/github/jimCresswell/e2e-web-test-framework-demo/badge.svg?targetFile=package.json)](https://snyk.io/test/github/jimCresswell/e2e-web-test-framework-demo?targetFile=package.json)
 
-End-to-end testing demo using [WebdriverIO](https://webdriver.io/) with [Cucumber](https://cucumber.io/).
+End-to-end JavaScript web testing demo using [WebdriverIO](https://webdriver.io/) with [Cucumber](https://cucumber.io/).
 
 The feature files are [here](src/features), written in a [Specification by Example](https://gojko.net/books/specification-by-example/) style. The step definitions are [here](src/steps). The data for each example used in the scenarios are in the [examples directory](src/examples), in `*Collection` modules and wrapped in test data classes.
 
